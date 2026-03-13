@@ -1,0 +1,16 @@
+{
+  "name": "court-aldaoud-agent",
+  "version": "1.0.0",
+  "description": "AI-Powered Booking System for Al Daoud Football Courts",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:api": "npm run dev --workspace=apps/api",
+    "dev:web": "npm run dev --workspace=apps/web",
+    "dev": "npm run dev:api & npm run dev:web",
+    "build": "npm run build --workspaces"
+  }
+}
