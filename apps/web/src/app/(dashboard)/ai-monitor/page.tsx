@@ -127,12 +127,12 @@ function StatCard({
   pulse?: boolean;
 }) {
   return (
-    <div className="rounded-xl border border-[#222] bg-[#1a1a1a] p-6 flex items-center gap-4">
-      <div className={cn("flex h-12 w-12 items-center justify-center rounded-lg", iconColor === "emerald" ? "bg-emerald-500/15" : iconColor === "blue" ? "bg-blue-500/15" : "bg-[#222]")}>
+    <div className="rounded-xl border border-white/[0.04] bg-[#0e0e0e] p-6 flex items-center gap-4">
+      <div className={cn("flex h-12 w-12 items-center justify-center rounded-lg", iconColor === "emerald" ? "bg-emerald-500/15" : iconColor === "blue" ? "bg-blue-500/15" : "bg-white/[0.04]")}>
         <Icon className={cn("h-6 w-6", iconColor === "emerald" ? "text-emerald-400" : iconColor === "blue" ? "text-blue-400" : "text-white")} />
       </div>
       <div className="flex-1 min-w-0">
-        <p className="text-sm text-[#a1a1aa]">{label}</p>
+        <p className="text-sm text-zinc-400">{label}</p>
         <div className="flex items-center gap-2">
           <p className="text-2xl font-bold text-white">{value}</p>
           {pulse && (
@@ -162,8 +162,8 @@ function ConversationCard({ conversation }: { conversation: Conversation }) {
   return (
     <div
       className={cn(
-        "rounded-xl border bg-[#1a1a1a] transition-all duration-200",
-        expanded ? "border-[#333]" : "border-[#222] hover:border-[#333]"
+        "rounded-xl border bg-[#0e0e0e] transition-all duration-200",
+        expanded ? "border-white/[0.08]" : "border-white/[0.04] hover:border-white/[0.08]"
       )}
     >
       {/* Card Header — Clickable */}
@@ -181,7 +181,7 @@ function ConversationCard({ conversation }: { conversation: Conversation }) {
               <p className="text-sm font-semibold text-white truncate" dir="rtl">
                 {conversation.customer_name}
               </p>
-              <div className="flex items-center gap-1.5 text-xs text-[#52525b]">
+              <div className="flex items-center gap-1.5 text-xs text-zinc-600">
                 <Phone className="h-3 w-3" />
                 <span>{conversation.customer_phone}</span>
               </div>
@@ -199,12 +199,12 @@ function ConversationCard({ conversation }: { conversation: Conversation }) {
               <span className={cn("inline-flex items-center rounded-md border px-2 py-0.5 text-[11px] font-medium", intent.color, intent.bg, intent.border)}>
                 {intent.label}
               </span>
-              <span className="text-xs text-[#52525b] flex items-center gap-1">
+              <span className="text-xs text-zinc-600 flex items-center gap-1">
                 <MessageSquare className="h-3 w-3" />
                 {messages.length} messages
               </span>
             </div>
-            <p className="text-sm text-[#a1a1aa] truncate" dir="rtl">
+            <p className="text-sm text-zinc-400 truncate" dir="rtl">
               {lastMessage}
             </p>
           </div>
@@ -221,7 +221,7 @@ function ConversationCard({ conversation }: { conversation: Conversation }) {
                 )}
                 {status.label}
               </span>
-              <div className="flex items-center gap-3 text-[11px] text-[#52525b]">
+              <div className="flex items-center gap-3 text-[11px] text-zinc-600">
                 <span className="flex items-center gap-1">
                   <Clock className="h-3 w-3" />
                   {startTime}
@@ -232,7 +232,7 @@ function ConversationCard({ conversation }: { conversation: Conversation }) {
                 </span>
               </div>
             </div>
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-[#222] bg-[#111] text-[#52525b]">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-white/[0.04] bg-[#0a0a0a] text-zinc-600">
               {expanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
             </div>
           </div>
@@ -241,11 +241,11 @@ function ConversationCard({ conversation }: { conversation: Conversation }) {
         {/* Tool Badges */}
         {toolsUsed.length > 0 && (
           <div className="mt-3 flex items-center gap-2 flex-wrap">
-            <Wrench className="h-3 w-3 text-[#52525b]" />
+            <Wrench className="h-3 w-3 text-zinc-600" />
             {toolsUsed.map((tool) => (
               <span
                 key={tool}
-                className="rounded-md bg-[#111] border border-[#222] px-2 py-0.5 text-[10px] font-mono text-[#52525b]"
+                className="rounded-md bg-[#0a0a0a] border border-white/[0.04] px-2 py-0.5 text-[10px] font-mono text-zinc-600"
               >
                 {tool}
               </span>
@@ -256,15 +256,15 @@ function ConversationCard({ conversation }: { conversation: Conversation }) {
 
       {/* Expanded: Chat Thread */}
       {expanded && (
-        <div className="border-t border-[#222] p-5">
+        <div className="border-t border-white/[0.04] p-5">
           {/* Collapse button */}
           <div className="flex justify-between items-center mb-4">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-[#52525b]">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-zinc-600">
               Conversation Thread
             </h4>
             <button
               onClick={() => setExpanded(false)}
-              className="flex items-center gap-1.5 rounded-lg border border-[#222] bg-[#111] px-3 py-1.5 text-xs text-[#a1a1aa] transition-all duration-200 hover:border-[#333] hover:text-white"
+              className="flex items-center gap-1.5 rounded-lg border border-white/[0.04] bg-[#0a0a0a] px-3 py-1.5 text-xs text-zinc-400 transition-all duration-200 hover:border-white/[0.08] hover:text-white"
             >
               <ChevronUp className="h-3 w-3" />
               Collapse
@@ -289,7 +289,7 @@ function ConversationCard({ conversation }: { conversation: Conversation }) {
                       <p className="text-[11px] font-mono text-amber-300/70">
                         {tc.result}
                       </p>
-                      <p className="text-[10px] text-[#52525b] mt-1">{tc.timestamp}</p>
+                      <p className="text-[10px] text-zinc-600 mt-1">{tc.timestamp}</p>
                     </div>
                   </div>
                 );
@@ -303,7 +303,7 @@ function ConversationCard({ conversation }: { conversation: Conversation }) {
                       <div className="rounded-xl rounded-tr-sm border border-emerald-500/30 bg-emerald-500/20 px-4 py-3">
                         <p className="text-sm text-white" dir="rtl">{msg.text}</p>
                       </div>
-                      <p className="text-[10px] text-[#52525b] mt-1 text-right">{msg.timestamp}</p>
+                      <p className="text-[10px] text-zinc-600 mt-1 text-right">{msg.timestamp}</p>
                     </div>
                   </div>
                 );
@@ -314,14 +314,14 @@ function ConversationCard({ conversation }: { conversation: Conversation }) {
                 <div key={msg.id || idx} className="flex justify-start">
                   <div className="max-w-[75%]">
                     <div className="flex items-start gap-2">
-                      <div className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#222]">
-                        <Bot className="h-3.5 w-3.5 text-[#a1a1aa]" />
+                      <div className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/[0.04]">
+                        <Bot className="h-3.5 w-3.5 text-zinc-400" />
                       </div>
                       <div>
-                        <div className="rounded-xl rounded-tl-sm border border-[#2a2a2a] bg-[#1a1a1a] px-4 py-3">
-                          <p className="text-sm text-[#a1a1aa]" dir="rtl">{msg.text}</p>
+                        <div className="rounded-xl rounded-tl-sm border border-white/[0.06] bg-[#0e0e0e] px-4 py-3">
+                          <p className="text-sm text-zinc-400" dir="rtl">{msg.text}</p>
                         </div>
-                        <p className="text-[10px] text-[#52525b] mt-1">{msg.timestamp}</p>
+                        <p className="text-[10px] text-zinc-600 mt-1">{msg.timestamp}</p>
                       </div>
                     </div>
                   </div>
@@ -332,13 +332,13 @@ function ConversationCard({ conversation }: { conversation: Conversation }) {
             {/* Waiting indicator for active conversations */}
             {conversation.status === "active" && (
               <div className="flex justify-end">
-                <div className="rounded-xl border border-[#222] bg-[#111] px-4 py-3">
+                <div className="rounded-xl border border-white/[0.04] bg-[#0a0a0a] px-4 py-3">
                   <div className="flex items-center gap-1.5">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#52525b] animate-bounce [animation-delay:0ms]" />
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#52525b] animate-bounce [animation-delay:150ms]" />
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#52525b] animate-bounce [animation-delay:300ms]" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-zinc-600 animate-bounce [animation-delay:0ms]" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-zinc-600 animate-bounce [animation-delay:150ms]" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-zinc-600 animate-bounce [animation-delay:300ms]" />
                   </div>
-                  <p className="text-[10px] text-[#52525b] mt-1">Waiting for customer reply...</p>
+                  <p className="text-[10px] text-zinc-600 mt-1">Waiting for customer reply...</p>
                 </div>
               </div>
             )}
@@ -410,15 +410,15 @@ export default function AIMonitorPage() {
   if (loading) {
     return (
       <div className="space-y-6 animate-pulse">
-        <div className="h-8 w-48 bg-[#222] rounded" />
+        <div className="h-8 w-48 bg-white/[0.04] rounded" />
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[1, 2, 3, 4].map((i) => (
-            <div key={i} className="rounded-xl border border-[#222] bg-[#1a1a1a] p-6 h-24" />
+            <div key={i} className="rounded-xl border border-white/[0.04] bg-[#0e0e0e] p-6 h-24" />
           ))}
         </div>
-        <div className="rounded-xl border border-[#222] bg-[#1a1a1a] p-4 h-16" />
+        <div className="rounded-xl border border-white/[0.04] bg-[#0e0e0e] p-4 h-16" />
         {[1, 2, 3].map((i) => (
-          <div key={i} className="rounded-xl border border-[#222] bg-[#1a1a1a] p-5 h-28" />
+          <div key={i} className="rounded-xl border border-white/[0.04] bg-[#0e0e0e] p-5 h-28" />
         ))}
       </div>
     );
@@ -429,7 +429,7 @@ export default function AIMonitorPage() {
       {/* Page Title */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <h1 className="text-2xl font-bold text-white">AI Monitor</h1>
+          <h1 className="text-[22px] font-bold text-white tracking-[-0.02em]">AI Monitor</h1>
           {activeCount > 0 && (
             <span className="flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-400">
               <span className="relative flex h-2 w-2">
@@ -472,8 +472,8 @@ export default function AIMonitorPage() {
       </div>
 
       {/* Filter Bar */}
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center rounded-xl border border-[#222] bg-[#1a1a1a] p-4">
-        <div className="flex items-center gap-2 text-[#52525b]">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center rounded-xl border border-white/[0.04] bg-[#0e0e0e] p-4">
+        <div className="flex items-center gap-2 text-zinc-600">
           <Filter className="h-4 w-4" />
           <span className="text-xs font-medium uppercase tracking-wider">Filters</span>
         </div>
@@ -482,7 +482,7 @@ export default function AIMonitorPage() {
         <select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value as "all" | ConversationStatus)}
-          className="rounded-lg border border-[#222] bg-[#111] px-3 py-2 text-sm text-white outline-none transition-all duration-200 focus:border-emerald-500/50 hover:border-[#333]"
+          className="rounded-lg border border-white/[0.04] bg-[#0a0a0a] px-3 py-2 text-sm text-white outline-none transition-all duration-200 focus:border-emerald-500/50 hover:border-white/[0.08]"
         >
           <option value="all">All Status</option>
           <option value="active">Active</option>
@@ -492,13 +492,13 @@ export default function AIMonitorPage() {
 
         {/* Search */}
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#52525b]" />
+          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-600" />
           <input
             type="text"
             placeholder="Search by name, phone, or message..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full rounded-lg border border-[#222] bg-[#111] pl-9 pr-3 py-2 text-sm text-white placeholder:text-[#52525b] outline-none transition-all duration-200 focus:border-emerald-500/50 hover:border-[#333]"
+            className="w-full rounded-lg border border-white/[0.04] bg-[#0a0a0a] pl-9 pr-3 py-2 text-sm text-white placeholder:text-zinc-600 outline-none transition-all duration-200 focus:border-emerald-500/50 hover:border-white/[0.08]"
           />
         </div>
 
@@ -509,15 +509,15 @@ export default function AIMonitorPage() {
             placeholder="From date"
             value={dateFrom}
             onChange={(e) => setDateFrom(e.target.value)}
-            className="w-28 rounded-lg border border-[#222] bg-[#111] px-3 py-2 text-sm text-white placeholder:text-[#52525b] outline-none transition-all duration-200 focus:border-emerald-500/50 hover:border-[#333]"
+            className="w-28 rounded-lg border border-white/[0.04] bg-[#0a0a0a] px-3 py-2 text-sm text-white placeholder:text-zinc-600 outline-none transition-all duration-200 focus:border-emerald-500/50 hover:border-white/[0.08]"
           />
-          <span className="text-[#52525b] text-xs">to</span>
+          <span className="text-zinc-600 text-xs">to</span>
           <input
             type="text"
             placeholder="To date"
             value={dateTo}
             onChange={(e) => setDateTo(e.target.value)}
-            className="w-28 rounded-lg border border-[#222] bg-[#111] px-3 py-2 text-sm text-white placeholder:text-[#52525b] outline-none transition-all duration-200 focus:border-emerald-500/50 hover:border-[#333]"
+            className="w-28 rounded-lg border border-white/[0.04] bg-[#0a0a0a] px-3 py-2 text-sm text-white placeholder:text-zinc-600 outline-none transition-all duration-200 focus:border-emerald-500/50 hover:border-white/[0.08]"
           />
         </div>
       </div>
@@ -525,17 +525,17 @@ export default function AIMonitorPage() {
       {/* Conversation List */}
       <div className="space-y-4">
         {conversations.length === 0 ? (
-          <div className="rounded-xl border border-[#222] bg-[#1a1a1a] p-12 text-center">
-            <Bot className="mx-auto h-12 w-12 text-[#52525b] mb-4" />
-            <p className="text-sm text-[#a1a1aa] font-medium mb-2">No conversations yet</p>
-            <p className="text-xs text-[#52525b] max-w-md mx-auto">
+          <div className="rounded-xl border border-white/[0.04] bg-[#0e0e0e] p-12 text-center">
+            <Bot className="mx-auto h-12 w-12 text-zinc-600 mb-4" />
+            <p className="text-sm text-zinc-400 font-medium mb-2">No conversations yet</p>
+            <p className="text-xs text-zinc-600 max-w-md mx-auto">
               Conversations will appear here once the WhatsApp bot starts receiving messages.
             </p>
           </div>
         ) : filtered.length === 0 ? (
-          <div className="rounded-xl border border-[#222] bg-[#1a1a1a] p-12 text-center">
-            <MessageSquare className="mx-auto h-10 w-10 text-[#52525b] mb-3" />
-            <p className="text-sm text-[#52525b]">No conversations match your filters.</p>
+          <div className="rounded-xl border border-white/[0.04] bg-[#0e0e0e] p-12 text-center">
+            <MessageSquare className="mx-auto h-10 w-10 text-zinc-600 mb-3" />
+            <p className="text-sm text-zinc-600">No conversations match your filters.</p>
           </div>
         ) : (
           filtered.map((conv) => <ConversationCard key={conv.id} conversation={conv} />)
@@ -543,11 +543,11 @@ export default function AIMonitorPage() {
       </div>
 
       {/* Footer Summary */}
-      <div className="flex items-center justify-between rounded-xl border border-[#222] bg-[#1a1a1a] px-5 py-3">
-        <p className="text-xs text-[#52525b]">
+      <div className="flex items-center justify-between rounded-xl border border-white/[0.04] bg-[#0e0e0e] px-5 py-3">
+        <p className="text-xs text-zinc-600">
           Showing {filtered.length} of {totalConversations} conversations
         </p>
-        <p className="text-xs text-[#52525b]">
+        <p className="text-xs text-zinc-600">
           Last updated: {new Date().toLocaleTimeString()}
         </p>
       </div>

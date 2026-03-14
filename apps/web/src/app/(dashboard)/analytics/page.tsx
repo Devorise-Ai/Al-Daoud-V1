@@ -106,8 +106,8 @@ function CustomTooltip({
 }) {
   if (!active || !payload?.length) return null;
   return (
-    <div className="bg-[#1a1a1a] border border-[#333] rounded-lg px-3 py-2 shadow-xl">
-      <p className="text-xs text-[#a1a1aa] mb-1">{label}</p>
+    <div className="bg-[#0e0e0e] border border-white/[0.08] rounded-lg px-3 py-2 shadow-xl">
+      <p className="text-xs text-zinc-400 mb-1">{label}</p>
       {payload.map((entry, i) => (
         <p key={i} className="text-sm font-medium" style={{ color: entry.color }}>
           {entry.name}: {typeof entry.value === "number" ? entry.value.toLocaleString() : entry.value}
@@ -128,7 +128,7 @@ function PieTooltip({
   if (!active || !payload?.length) return null;
   const entry = payload[0];
   return (
-    <div className="bg-[#1a1a1a] border border-[#333] rounded-lg px-3 py-2 shadow-xl">
+    <div className="bg-[#0e0e0e] border border-white/[0.08] rounded-lg px-3 py-2 shadow-xl">
       <p className="text-sm font-medium text-white">
         {entry.name}: {entry.value}
       </p>
@@ -157,16 +157,16 @@ const COURT_COLORS = ["#10b981", "#3b82f6", "#8b5cf6", "#f59e0b", "#ef4444", "#e
 function LoadingSkeleton() {
   return (
     <div className="max-w-7xl mx-auto space-y-8 animate-pulse">
-      <div className="h-8 w-48 bg-[#222] rounded" />
+      <div className="h-8 w-48 bg-white/[0.04] rounded" />
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
         {[1, 2, 3, 4].map((i) => (
-          <div key={i} className="bg-[#1a1a1a] border border-[#222] rounded-xl p-5 h-32" />
+          <div key={i} className="bg-[#0e0e0e] border border-white/[0.04] rounded-xl p-5 h-32" />
         ))}
       </div>
-      <div className="bg-[#1a1a1a] border border-[#222] rounded-xl p-6 h-[360px]" />
+      <div className="bg-[#0e0e0e] border border-white/[0.04] rounded-xl p-6 h-[360px]" />
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div className="bg-[#1a1a1a] border border-[#222] rounded-xl p-6 h-[320px]" />
-        <div className="bg-[#1a1a1a] border border-[#222] rounded-xl p-6 h-[320px]" />
+        <div className="bg-[#0e0e0e] border border-white/[0.04] rounded-xl p-6 h-[320px]" />
+        <div className="bg-[#0e0e0e] border border-white/[0.04] rounded-xl p-6 h-[320px]" />
       </div>
     </div>
   );
@@ -306,10 +306,10 @@ export default function AnalyticsPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-text-primary tracking-tight">
+          <h1 className="text-[22px] font-bold text-white tracking-[-0.02em]">
             Analytics
           </h1>
-          <p className="text-text-secondary text-sm mt-1">
+          <p className="text-zinc-400 text-sm mt-1">
             Business performance and insights for Al Daoud Courts.
           </p>
         </div>
@@ -318,14 +318,14 @@ export default function AnalyticsPage() {
         <div className="relative">
           <button
             onClick={() => setDropdownOpen(!dropdownOpen)}
-            className="flex items-center gap-2 px-4 py-2 bg-[#1a1a1a] border border-[#222] rounded-lg text-sm text-text-primary hover:bg-[#222] transition-colors"
+            className="flex items-center gap-2 px-4 py-2 bg-[#0e0e0e] border border-white/[0.04] rounded-lg text-sm text-white hover:bg-white/[0.04] transition-colors"
           >
             <Calendar className="w-4 h-4 text-emerald-500" />
             {periodLabels[period]}
-            <ChevronDown className={cn("w-4 h-4 text-[#a1a1aa] transition-transform", dropdownOpen && "rotate-180")} />
+            <ChevronDown className={cn("w-4 h-4 text-zinc-400 transition-transform", dropdownOpen && "rotate-180")} />
           </button>
           {dropdownOpen && (
-            <div className="absolute right-0 mt-1 w-40 bg-[#1a1a1a] border border-[#333] rounded-lg shadow-xl z-50 overflow-hidden">
+            <div className="absolute right-0 mt-1 w-40 bg-[#0e0e0e] border border-white/[0.08] rounded-lg shadow-xl z-50 overflow-hidden">
               {(Object.keys(periodLabels) as Period[]).map((p) => (
                 <button
                   key={p}
@@ -334,7 +334,7 @@ export default function AnalyticsPage() {
                     "w-full text-left px-4 py-2.5 text-sm transition-colors",
                     p === period
                       ? "bg-emerald-500/10 text-emerald-500"
-                      : "text-text-secondary hover:bg-[#222]"
+                      : "text-zinc-400 hover:bg-white/[0.04]"
                   )}
                 >
                   {periodLabels[p]}
@@ -349,7 +349,7 @@ export default function AnalyticsPage() {
       <section className="space-y-4">
         <div className="flex items-center gap-2">
           <DollarSign className="w-5 h-5 text-emerald-500" />
-          <h2 className="text-lg font-semibold text-text-primary">Revenue Overview</h2>
+          <h2 className="text-lg font-semibold text-white">Revenue Overview</h2>
         </div>
 
         {/* Stat Cards */}
@@ -364,7 +364,7 @@ export default function AnalyticsPage() {
             return (
               <div
                 key={stat.label}
-                className="bg-[#1a1a1a] border border-[#222] rounded-xl p-5 hover:border-[#333] transition-colors"
+                className="bg-[#0e0e0e] border border-white/[0.04] rounded-xl p-5 hover:border-white/[0.08] transition-colors"
               >
                 <div className="flex items-start justify-between">
                   <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center">
@@ -375,10 +375,10 @@ export default function AnalyticsPage() {
                   </span>
                 </div>
                 <div className="mt-4">
-                  <p className="text-2xl font-bold text-text-primary tracking-tight">
+                  <p className="text-2xl font-bold text-white tracking-tight">
                     {stat.value}
                   </p>
-                  <p className="text-xs text-[#a1a1aa] mt-1">{stat.label}</p>
+                  <p className="text-xs text-zinc-400 mt-1">{stat.label}</p>
                 </div>
               </div>
             );
@@ -386,24 +386,24 @@ export default function AnalyticsPage() {
         </div>
 
         {/* Revenue Line Chart */}
-        <div className="bg-[#1a1a1a] border border-[#222] rounded-xl p-6">
-          <h3 className="text-sm font-semibold text-text-primary mb-4">
+        <div className="bg-[#0e0e0e] border border-white/[0.04] rounded-xl p-6">
+          <h3 className="text-sm font-semibold text-white mb-4">
             Revenue Trend
           </h3>
           <div className="h-[300px]">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={revenueTimeline}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#222" />
+                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" />
                 <XAxis
                   dataKey="date"
-                  stroke="#a1a1aa"
-                  tick={{ fill: "#a1a1aa", fontSize: 12 }}
-                  axisLine={{ stroke: "#333" }}
+                  stroke="rgba(255,255,255,0.15)"
+                  tick={{ fill: "rgba(255,255,255,0.4)", fontSize: 12 }}
+                  axisLine={{ stroke: "rgba(255,255,255,0.06)" }}
                 />
                 <YAxis
-                  stroke="#a1a1aa"
-                  tick={{ fill: "#a1a1aa", fontSize: 12 }}
-                  axisLine={{ stroke: "#333" }}
+                  stroke="rgba(255,255,255,0.15)"
+                  tick={{ fill: "rgba(255,255,255,0.4)", fontSize: 12 }}
+                  axisLine={{ stroke: "rgba(255,255,255,0.06)" }}
                   tickFormatter={(v) => `${v >= 1000 ? `${(v / 1000).toFixed(0)}k` : v}`}
                 />
                 <Tooltip content={<CustomTooltip />} />
@@ -426,29 +426,29 @@ export default function AnalyticsPage() {
       <section className="space-y-4">
         <div className="flex items-center gap-2">
           <BarChart3 className="w-5 h-5 text-blue-400" />
-          <h2 className="text-lg font-semibold text-text-primary">Booking Insights</h2>
+          <h2 className="text-lg font-semibold text-white">Booking Insights</h2>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {/* Bookings per Day Bar Chart */}
-          <div className="bg-[#1a1a1a] border border-[#222] rounded-xl p-6">
-            <h3 className="text-sm font-semibold text-text-primary mb-4">
+          <div className="bg-[#0e0e0e] border border-white/[0.04] rounded-xl p-6">
+            <h3 className="text-sm font-semibold text-white mb-4">
               Bookings by Day of Week
             </h3>
             <div className="h-[260px]">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={bookingsPerDay}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#222" />
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" />
                   <XAxis
                     dataKey="day"
-                    stroke="#a1a1aa"
-                    tick={{ fill: "#a1a1aa", fontSize: 12 }}
-                    axisLine={{ stroke: "#333" }}
+                    stroke="rgba(255,255,255,0.15)"
+                    tick={{ fill: "rgba(255,255,255,0.4)", fontSize: 12 }}
+                    axisLine={{ stroke: "rgba(255,255,255,0.06)" }}
                   />
                   <YAxis
-                    stroke="#a1a1aa"
-                    tick={{ fill: "#a1a1aa", fontSize: 12 }}
-                    axisLine={{ stroke: "#333" }}
+                    stroke="rgba(255,255,255,0.15)"
+                    tick={{ fill: "rgba(255,255,255,0.4)", fontSize: 12 }}
+                    axisLine={{ stroke: "rgba(255,255,255,0.06)" }}
                   />
                   <Tooltip content={<CustomTooltip />} />
                   <Bar
@@ -463,8 +463,8 @@ export default function AnalyticsPage() {
           </div>
 
           {/* Bookings by Source Donut */}
-          <div className="bg-[#1a1a1a] border border-[#222] rounded-xl p-6">
-            <h3 className="text-sm font-semibold text-text-primary mb-4">
+          <div className="bg-[#0e0e0e] border border-white/[0.04] rounded-xl p-6">
+            <h3 className="text-sm font-semibold text-white mb-4">
               Bookings by Source
             </h3>
             <div className="h-[260px] flex items-center">
@@ -497,8 +497,8 @@ export default function AnalyticsPage() {
                       style={{ backgroundColor: s.color }}
                     />
                     <div>
-                      <p className="text-sm font-medium text-text-primary">{s.name}</p>
-                      <p className="text-xs text-[#a1a1aa]">{s.value}%</p>
+                      <p className="text-sm font-medium text-white">{s.name}</p>
+                      <p className="text-xs text-zinc-400">{s.value}%</p>
                     </div>
                   </div>
                 ))}
@@ -512,10 +512,10 @@ export default function AnalyticsPage() {
       <section className="space-y-4">
         <div className="flex items-center gap-2">
           <Clock className="w-5 h-5 text-amber-400" />
-          <h2 className="text-lg font-semibold text-text-primary">Peak Hours</h2>
+          <h2 className="text-lg font-semibold text-white">Peak Hours</h2>
         </div>
 
-        <div className="bg-[#1a1a1a] border border-[#222] rounded-xl p-6 overflow-x-auto">
+        <div className="bg-[#0e0e0e] border border-white/[0.04] rounded-xl p-6 overflow-x-auto">
           <div className="min-w-[640px]">
             {/* Header row: hours */}
             <div className="flex">
@@ -523,7 +523,7 @@ export default function AnalyticsPage() {
               {hours.map((h) => (
                 <div
                   key={h}
-                  className="flex-1 text-center text-[11px] text-[#a1a1aa] pb-2 font-medium"
+                  className="flex-1 text-center text-[11px] text-zinc-400 pb-2 font-medium"
                 >
                   {h <= 12 ? `${h}AM` : `${h - 12}PM`}
                 </div>
@@ -533,7 +533,7 @@ export default function AnalyticsPage() {
             {/* Rows: days */}
             {days.map((day) => (
               <div key={day} className="flex items-center">
-                <div className="w-16 shrink-0 text-xs text-[#a1a1aa] font-medium py-1">
+                <div className="w-16 shrink-0 text-xs text-zinc-400 font-medium py-1">
                   {day}
                 </div>
                 {hours.map((h) => {
@@ -559,7 +559,7 @@ export default function AnalyticsPage() {
 
             {/* Legend */}
             <div className="flex items-center justify-end gap-2 mt-3 pt-2">
-              <span className="text-[11px] text-[#a1a1aa]">Less</span>
+              <span className="text-[11px] text-zinc-400">Less</span>
               {[0, 0.25, 0.5, 0.75, 1].map((o, i) => (
                 <div
                   key={i}
@@ -572,7 +572,7 @@ export default function AnalyticsPage() {
                   }}
                 />
               ))}
-              <span className="text-[11px] text-[#a1a1aa]">More</span>
+              <span className="text-[11px] text-zinc-400">More</span>
             </div>
           </div>
         </div>
@@ -582,7 +582,7 @@ export default function AnalyticsPage() {
       <section className="space-y-4">
         <div className="flex items-center gap-2">
           <Target className="w-5 h-5 text-violet-400" />
-          <h2 className="text-lg font-semibold text-text-primary">Court Performance</h2>
+          <h2 className="text-lg font-semibold text-white">Court Performance</h2>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
@@ -592,25 +592,25 @@ export default function AnalyticsPage() {
             return (
               <div
                 key={court.name}
-                className="bg-[#1a1a1a] border border-[#222] rounded-xl p-5 hover:border-[#333] transition-colors"
+                className="bg-[#0e0e0e] border border-white/[0.04] rounded-xl p-5 hover:border-white/[0.08] transition-colors"
               >
                 <div className="flex items-center gap-2 mb-3">
                   <div
                     className="w-3 h-3 rounded-full shrink-0"
                     style={{ backgroundColor: court.color }}
                   />
-                  <h4 className="text-sm font-medium text-text-primary truncate">
+                  <h4 className="text-sm font-medium text-white truncate">
                     {court.name}
                   </h4>
                 </div>
-                <p className="text-xl font-bold text-text-primary">
+                <p className="text-xl font-bold text-white">
                   {court.revenue.toLocaleString()} JOD
                 </p>
-                <p className="text-xs text-[#a1a1aa] mt-0.5">
+                <p className="text-xs text-zinc-400 mt-0.5">
                   {court.bookings} bookings
                 </p>
                 {/* Bar */}
-                <div className="mt-3 h-2 bg-[#222] rounded-full overflow-hidden">
+                <div className="mt-3 h-2 bg-white/[0.04] rounded-full overflow-hidden">
                   <div
                     className="h-full rounded-full transition-all duration-500"
                     style={{
@@ -629,13 +629,13 @@ export default function AnalyticsPage() {
       <section className="space-y-4">
         <div className="flex items-center gap-2">
           <Users className="w-5 h-5 text-blue-400" />
-          <h2 className="text-lg font-semibold text-text-primary">Customer Insights</h2>
+          <h2 className="text-lg font-semibold text-white">Customer Insights</h2>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {/* Segment Distribution Donut */}
-          <div className="bg-[#1a1a1a] border border-[#222] rounded-xl p-6">
-            <h3 className="text-sm font-semibold text-text-primary mb-4">
+          <div className="bg-[#0e0e0e] border border-white/[0.04] rounded-xl p-6">
+            <h3 className="text-sm font-semibold text-white mb-4">
               Customer Segments
             </h3>
             <div className="h-[260px] flex items-center">
@@ -668,8 +668,8 @@ export default function AnalyticsPage() {
                       style={{ backgroundColor: s.color }}
                     />
                     <div>
-                      <p className="text-sm font-medium text-text-primary">{s.name}</p>
-                      <p className="text-xs text-[#a1a1aa]">{s.value} customers</p>
+                      <p className="text-sm font-medium text-white">{s.name}</p>
+                      <p className="text-xs text-zinc-400">{s.value} customers</p>
                     </div>
                   </div>
                 ))}
@@ -678,13 +678,13 @@ export default function AnalyticsPage() {
           </div>
 
           {/* Top Customers Table */}
-          <div className="bg-[#1a1a1a] border border-[#222] rounded-xl p-6">
-            <h3 className="text-sm font-semibold text-text-primary mb-4">
+          <div className="bg-[#0e0e0e] border border-white/[0.04] rounded-xl p-6">
+            <h3 className="text-sm font-semibold text-white mb-4">
               Top Customers
             </h3>
             <div className="space-y-1">
               {/* Table header */}
-              <div className="grid grid-cols-[1fr_80px_100px] gap-2 px-3 py-2 text-xs text-[#a1a1aa] font-medium border-b border-[#222]">
+              <div className="grid grid-cols-[1fr_80px_100px] gap-2 px-3 py-2 text-xs text-zinc-400 font-medium border-b border-white/[0.04]">
                 <span>Customer</span>
                 <span className="text-right">Bookings</span>
                 <span className="text-right">Spent</span>
@@ -698,12 +698,12 @@ export default function AnalyticsPage() {
                     <div className="w-7 h-7 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-[11px] font-bold text-emerald-500 shrink-0">
                       {i + 1}
                     </div>
-                    <span className="text-sm text-text-primary truncate">
+                    <span className="text-sm text-white truncate">
                       {c.name}
                     </span>
                   </div>
-                  <span className="text-sm text-[#a1a1aa] text-right">{c.bookings}</span>
-                  <span className="text-sm font-medium text-text-primary text-right">
+                  <span className="text-sm text-zinc-400 text-right">{c.bookings}</span>
+                  <span className="text-sm font-medium text-white text-right">
                     {c.spent.toLocaleString()} JOD
                   </span>
                 </div>
@@ -717,7 +717,7 @@ export default function AnalyticsPage() {
       <section className="space-y-4">
         <div className="flex items-center gap-2">
           <Bot className="w-5 h-5 text-emerald-500" />
-          <h2 className="text-lg font-semibold text-text-primary">AI Performance</h2>
+          <h2 className="text-lg font-semibold text-white">AI Performance</h2>
         </div>
 
         {/* AI Stats */}
@@ -731,18 +731,18 @@ export default function AnalyticsPage() {
             return (
               <div
                 key={stat.label}
-                className="bg-[#1a1a1a] border border-[#222] rounded-xl p-5 hover:border-[#333] transition-colors"
+                className="bg-[#0e0e0e] border border-white/[0.04] rounded-xl p-5 hover:border-white/[0.08] transition-colors"
               >
                 <div className="flex items-start gap-3">
                   <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center shrink-0">
                     <Icon className="w-5 h-5 text-emerald-500" />
                   </div>
                   <div>
-                    <p className="text-2xl font-bold text-text-primary tracking-tight">
+                    <p className="text-2xl font-bold text-white tracking-tight">
                       {stat.value}
                     </p>
-                    <p className="text-xs text-[#a1a1aa] mt-0.5">{stat.label}</p>
-                    <p className="text-[11px] text-[#666] mt-0.5">{stat.desc}</p>
+                    <p className="text-xs text-zinc-400 mt-0.5">{stat.label}</p>
+                    <p className="text-[11px] text-zinc-700 mt-0.5">{stat.desc}</p>
                   </div>
                 </div>
               </div>
@@ -751,26 +751,26 @@ export default function AnalyticsPage() {
         </div>
 
         {/* AI Intent Distribution Bar Chart */}
-        <div className="bg-[#1a1a1a] border border-[#222] rounded-xl p-6">
-          <h3 className="text-sm font-semibold text-text-primary mb-4">
+        <div className="bg-[#0e0e0e] border border-white/[0.04] rounded-xl p-6">
+          <h3 className="text-sm font-semibold text-white mb-4">
             Intent Distribution
           </h3>
           <div className="h-[220px]">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={aiIntents} layout="vertical">
-                <CartesianGrid strokeDasharray="3 3" stroke="#222" horizontal={false} />
+                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.04)" horizontal={false} />
                 <XAxis
                   type="number"
-                  stroke="#a1a1aa"
-                  tick={{ fill: "#a1a1aa", fontSize: 12 }}
-                  axisLine={{ stroke: "#333" }}
+                  stroke="rgba(255,255,255,0.15)"
+                  tick={{ fill: "rgba(255,255,255,0.4)", fontSize: 12 }}
+                  axisLine={{ stroke: "rgba(255,255,255,0.06)" }}
                 />
                 <YAxis
                   type="category"
                   dataKey="intent"
-                  stroke="#a1a1aa"
-                  tick={{ fill: "#a1a1aa", fontSize: 12 }}
-                  axisLine={{ stroke: "#333" }}
+                  stroke="rgba(255,255,255,0.15)"
+                  tick={{ fill: "rgba(255,255,255,0.4)", fontSize: 12 }}
+                  axisLine={{ stroke: "rgba(255,255,255,0.06)" }}
                   width={100}
                 />
                 <Tooltip content={<CustomTooltip />} />

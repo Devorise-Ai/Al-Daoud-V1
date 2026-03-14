@@ -49,9 +49,9 @@ interface ApiBooking {
 const statusConfig = {
   confirmed: {
     label: "Confirmed",
-    bg: "bg-emerald/10",
-    text: "text-emerald",
-    border: "border-emerald/20",
+    bg: "bg-emerald-500/10",
+    text: "text-emerald-400",
+    border: "border-emerald-500/20",
   },
   completed: {
     label: "Completed",
@@ -150,7 +150,7 @@ export default function BookingDetailPage() {
         <div className="flex items-center gap-4">
           <Link
             href="/bookings"
-            className="p-2 rounded-lg text-text-muted hover:text-text-primary hover:bg-white/[0.06] transition-all duration-200"
+            className="p-2 rounded-lg text-zinc-600 hover:text-white hover:bg-white/[0.06] transition-all duration-200"
           >
             <ArrowLeft className="w-5 h-5" />
           </Link>
@@ -159,7 +159,7 @@ export default function BookingDetailPage() {
             <div className="h-4 w-32 rounded bg-white/[0.06] animate-pulse mt-2" />
           </div>
         </div>
-        <div className="text-text-muted text-sm">Loading booking details...</div>
+        <div className="text-zinc-600 text-sm">Loading booking details...</div>
       </div>
     );
   }
@@ -170,12 +170,12 @@ export default function BookingDetailPage() {
         <div className="flex items-center gap-4">
           <Link
             href="/bookings"
-            className="p-2 rounded-lg text-text-muted hover:text-text-primary hover:bg-white/[0.06] transition-all duration-200"
+            className="p-2 rounded-lg text-zinc-600 hover:text-white hover:bg-white/[0.06] transition-all duration-200"
           >
             <ArrowLeft className="w-5 h-5" />
           </Link>
           <div>
-            <h1 className="text-2xl font-bold text-text-primary tracking-tight">
+            <h1 className="text-2xl font-bold text-white tracking-tight">
               Booking Not Found
             </h1>
           </div>
@@ -220,18 +220,18 @@ export default function BookingDetailPage() {
         <div className="flex items-center gap-4">
           <Link
             href="/bookings"
-            className="p-2 rounded-lg text-text-muted hover:text-text-primary hover:bg-white/[0.06] transition-all duration-200"
+            className="p-2 rounded-xl text-zinc-600 hover:text-white hover:bg-white/[0.04] transition-all duration-200"
           >
             <ArrowLeft className="w-5 h-5" />
           </Link>
           <div>
             <div className="flex items-center gap-3">
-              <h1 className="text-2xl font-bold text-text-primary tracking-tight">
+              <h1 className="text-[22px] font-bold text-white tracking-[-0.02em]">
                 Booking #{booking.id}
               </h1>
               <span
                 className={cn(
-                  "inline-flex items-center px-3 py-1 rounded-full text-sm font-medium border",
+                  "inline-flex items-center px-3 py-1 rounded-full text-[11px] font-semibold border",
                   status.bg,
                   status.text,
                   status.border
@@ -241,7 +241,7 @@ export default function BookingDetailPage() {
               </span>
             </div>
             {createdDate && (
-              <p className="text-text-muted text-sm mt-1">
+              <p className="text-zinc-600 text-[13px] mt-1">
                 Created on{" "}
                 {createdDate.toLocaleDateString("en-GB", {
                   day: "numeric",
@@ -262,7 +262,7 @@ export default function BookingDetailPage() {
               <button
                 onClick={handleMarkCompleted}
                 disabled={actionLoading}
-                className="flex items-center gap-2 px-4 py-2 bg-emerald/10 hover:bg-emerald/20 text-emerald text-sm font-medium rounded-lg transition-all duration-200 disabled:opacity-50"
+                className="flex items-center gap-2 px-4 py-2.5 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 text-[13px] font-semibold rounded-xl border border-emerald-500/20 hover:-translate-y-[1px] transition-all duration-200 disabled:opacity-50 disabled:hover:translate-y-0"
               >
                 <CheckCircle2 className="w-4 h-4" />
                 Mark Completed
@@ -270,7 +270,7 @@ export default function BookingDetailPage() {
               <button
                 onClick={handleCancel}
                 disabled={actionLoading}
-                className="flex items-center gap-2 px-4 py-2 bg-red-500/10 hover:bg-red-500/20 text-red-400 text-sm font-medium rounded-lg transition-all duration-200 disabled:opacity-50"
+                className="flex items-center gap-2 px-4 py-2.5 bg-red-500/10 hover:bg-red-500/20 text-red-400 text-[13px] font-semibold rounded-xl border border-red-500/20 hover:-translate-y-[1px] transition-all duration-200 disabled:opacity-50 disabled:hover:translate-y-0"
               >
                 <XCircle className="w-4 h-4" />
                 Cancel
@@ -283,21 +283,21 @@ export default function BookingDetailPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Main Details Card */}
         <div className="lg:col-span-2 space-y-6">
-          <div className="bg-card border border-border-subtle rounded-xl overflow-hidden">
-            <div className="px-6 py-4 border-b border-border">
-              <h2 className="text-sm font-semibold text-text-primary">
+          <div className="bg-[#0e0e0e] border border-white/[0.04] rounded-xl overflow-hidden">
+            <div className="px-6 py-4 border-b border-white/[0.04]">
+              <h2 className="text-[13px] font-semibold text-zinc-300 uppercase tracking-[0.06em]">
                 Booking Details
               </h2>
             </div>
             <div className="p-6 grid grid-cols-2 gap-6">
               {/* Court */}
               <div className="flex items-start gap-3">
-                <div className="w-9 h-9 rounded-lg bg-emerald/10 flex items-center justify-center shrink-0">
-                  <MapPin className="w-4 h-4 text-emerald" />
+                <div className="w-9 h-9 rounded-xl bg-emerald-500/10 border border-emerald-500/10 flex items-center justify-center shrink-0">
+                  <MapPin className="w-4 h-4 text-emerald-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-text-muted">Court</p>
-                  <p className="text-sm font-medium text-text-primary mt-0.5">
+                  <p className="text-xs text-zinc-600">Court</p>
+                  <p className="text-sm font-medium text-white mt-0.5">
                     {booking.court_name || `Court ${booking.court_id}`}
                   </p>
                 </div>
@@ -309,8 +309,8 @@ export default function BookingDetailPage() {
                   <Calendar className="w-4 h-4 text-blue-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-text-muted">Date</p>
-                  <p className="text-sm font-medium text-text-primary mt-0.5">
+                  <p className="text-xs text-zinc-600">Date</p>
+                  <p className="text-sm font-medium text-white mt-0.5">
                     {startDate.toLocaleDateString("en-GB", {
                       weekday: "long",
                       day: "numeric",
@@ -327,11 +327,11 @@ export default function BookingDetailPage() {
                   <Clock className="w-4 h-4 text-violet-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-text-muted">Time & Duration</p>
-                  <p className="text-sm font-medium text-text-primary mt-0.5">
+                  <p className="text-xs text-zinc-600">Time & Duration</p>
+                  <p className="text-sm font-medium text-white mt-0.5">
                     {startTimeStr} - {endTimeStr}
                   </p>
-                  <p className="text-xs text-text-muted">{durationStr}</p>
+                  <p className="text-xs text-zinc-600">{durationStr}</p>
                 </div>
               </div>
 
@@ -341,8 +341,8 @@ export default function BookingDetailPage() {
                   <DollarSign className="w-4 h-4 text-amber-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-text-muted">Price</p>
-                  <p className="text-sm font-medium text-text-primary mt-0.5">
+                  <p className="text-xs text-zinc-600">Price</p>
+                  <p className="text-sm font-medium text-white mt-0.5">
                     {booking.price} JOD
                   </p>
                 </div>
@@ -354,8 +354,8 @@ export default function BookingDetailPage() {
                   <SourceIcon className={cn("w-4 h-4", source.color)} />
                 </div>
                 <div>
-                  <p className="text-xs text-text-muted">Booking Source</p>
-                  <p className="text-sm font-medium text-text-primary mt-0.5">
+                  <p className="text-xs text-zinc-600">Booking Source</p>
+                  <p className="text-sm font-medium text-white mt-0.5">
                     {source.label}
                   </p>
                 </div>
@@ -368,13 +368,13 @@ export default function BookingDetailPage() {
                     <Hash className="w-4 h-4 text-zinc-400" />
                   </div>
                   <div>
-                    <p className="text-xs text-text-muted">Cancel Token</p>
+                    <p className="text-xs text-zinc-600">Cancel Token</p>
                     <div className="flex items-center gap-2 mt-0.5">
-                      <code className="text-sm font-mono text-text-secondary bg-background px-2 py-0.5 rounded">
+                      <code className="text-sm font-mono text-zinc-400 bg-[#050505] px-2 py-0.5 rounded">
                         {booking.cancel_token}
                       </code>
                       <button
-                        className="p-1 rounded text-text-muted hover:text-text-primary transition-colors"
+                        className="p-1 rounded text-zinc-600 hover:text-white transition-colors"
                         title="Copy token"
                         onClick={() =>
                           navigator.clipboard.writeText(booking.cancel_token)
@@ -393,8 +393,8 @@ export default function BookingDetailPage() {
                   <Calendar className="w-4 h-4 text-violet-400" />
                 </div>
                 <div>
-                  <p className="text-xs text-text-muted">Booking Type</p>
-                  <p className="text-sm font-medium text-text-primary mt-0.5 capitalize">
+                  <p className="text-xs text-zinc-600">Booking Type</p>
+                  <p className="text-sm font-medium text-white mt-0.5 capitalize">
                     {booking.booking_type}
                   </p>
                 </div>
@@ -405,31 +405,31 @@ export default function BookingDetailPage() {
 
         {/* Sidebar - Customer Info */}
         <div className="space-y-6">
-          <div className="bg-card border border-border-subtle rounded-xl overflow-hidden">
-            <div className="px-6 py-4 border-b border-border">
-              <h2 className="text-sm font-semibold text-text-primary">
+          <div className="bg-[#0e0e0e] border border-white/[0.04] rounded-xl overflow-hidden">
+            <div className="px-6 py-4 border-b border-white/[0.04]">
+              <h2 className="text-sm font-semibold text-white">
                 Customer Information
               </h2>
             </div>
             <div className="p-6 space-y-5">
               {/* Avatar & Name */}
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-xl bg-emerald/10 border border-emerald/20 flex items-center justify-center text-lg font-bold text-emerald">
+                <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-lg font-bold text-emerald-400">
                   {(booking.customer_name || "?").charAt(0)}
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-text-primary">
+                  <p className="text-sm font-semibold text-white">
                     {booking.customer_name || "Unknown Customer"}
                   </p>
-                  <p className="text-xs text-text-muted">Customer</p>
+                  <p className="text-xs text-zinc-600">Customer</p>
                 </div>
               </div>
 
               {/* Phone */}
               <div className="space-y-3">
                 <div className="flex items-center gap-2">
-                  <Phone className="w-4 h-4 text-text-muted" />
-                  <span className="text-sm text-text-secondary">
+                  <Phone className="w-4 h-4 text-zinc-600" />
+                  <span className="text-sm text-zinc-400">
                     {booking.customer_phone || "—"}
                   </span>
                 </div>

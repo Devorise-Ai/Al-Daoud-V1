@@ -182,15 +182,15 @@ export default function NewBookingPage() {
       <div className="flex items-center gap-4">
         <Link
           href="/bookings"
-          className="p-2 rounded-lg text-text-muted hover:text-text-primary hover:bg-white/[0.06] transition-all duration-200"
+          className="p-2 rounded-lg text-zinc-600 hover:text-white hover:bg-white/[0.06] transition-all duration-200"
         >
           <ArrowLeft className="w-5 h-5" />
         </Link>
         <div>
-          <h1 className="text-2xl font-bold text-text-primary tracking-tight">
+          <h1 className="text-[22px] font-bold text-white tracking-[-0.02em]">
             New Booking
           </h1>
-          <p className="text-text-secondary text-sm mt-1">
+          <p className="text-zinc-500 text-[13px] mt-1">
             Create a new court reservation
           </p>
         </div>
@@ -206,20 +206,20 @@ export default function NewBookingPage() {
         {/* Form */}
         <div className="lg:col-span-2 space-y-6">
           {/* Customer Info */}
-          <div className="bg-card border border-border-subtle rounded-xl overflow-hidden">
-            <div className="px-6 py-4 border-b border-border">
-              <h2 className="text-sm font-semibold text-text-primary flex items-center gap-2">
-                <User className="w-4 h-4 text-text-muted" />
+          <div className="bg-[#0e0e0e] border border-white/[0.04] rounded-xl overflow-hidden">
+            <div className="px-6 py-4 border-b border-white/[0.04]">
+              <h2 className="text-sm font-semibold text-white flex items-center gap-2">
+                <User className="w-4 h-4 text-zinc-600" />
                 Customer Information
               </h2>
             </div>
             <div className="p-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-medium text-text-muted mb-1.5">
+                <label className="block text-xs font-medium text-zinc-600 mb-1.5">
                   Phone Number
                 </label>
                 <div className="flex">
-                  <span className="inline-flex items-center px-3 bg-background border border-r-0 border-border rounded-l-lg text-sm text-text-muted">
+                  <span className="inline-flex items-center px-3 bg-[#050505] border border-r-0 border-white/[0.04] rounded-l-lg text-sm text-zinc-600">
                     +962
                   </span>
                   <input
@@ -227,12 +227,12 @@ export default function NewBookingPage() {
                     placeholder="79 123 4567"
                     value={customerPhone}
                     onChange={(e) => setCustomerPhone(e.target.value)}
-                    className="flex-1 px-3 py-2.5 bg-background border border-border rounded-r-lg text-sm text-text-primary placeholder:text-text-muted focus:outline-none"
+                    className="flex-1 px-3 py-2.5 bg-[#050505] border border-white/[0.04] rounded-r-lg text-sm text-white placeholder:text-zinc-600 focus:outline-none"
                   />
                 </div>
               </div>
               <div>
-                <label className="block text-xs font-medium text-text-muted mb-1.5">
+                <label className="block text-xs font-medium text-zinc-600 mb-1.5">
                   Customer Name
                 </label>
                 <input
@@ -240,31 +240,31 @@ export default function NewBookingPage() {
                   placeholder="Ahmad Al-Rashid"
                   value={customerName}
                   onChange={(e) => setCustomerName(e.target.value)}
-                  className="w-full px-3 py-2.5 bg-background border border-border rounded-lg text-sm text-text-primary placeholder:text-text-muted focus:outline-none"
+                  className="w-full px-3 py-2.5 bg-[#050505] border border-white/[0.04] rounded-lg text-sm text-white placeholder:text-zinc-600 focus:outline-none"
                 />
               </div>
             </div>
           </div>
 
           {/* Court & Schedule */}
-          <div className="bg-card border border-border-subtle rounded-xl overflow-hidden">
-            <div className="px-6 py-4 border-b border-border">
-              <h2 className="text-sm font-semibold text-text-primary flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-text-muted" />
+          <div className="bg-[#0e0e0e] border border-white/[0.04] rounded-xl overflow-hidden">
+            <div className="px-6 py-4 border-b border-white/[0.04]">
+              <h2 className="text-sm font-semibold text-white flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-zinc-600" />
                 Court & Schedule
               </h2>
             </div>
             <div className="p-6 space-y-4">
               {/* Court Selection */}
               <div>
-                <label className="block text-xs font-medium text-text-muted mb-1.5">
+                <label className="block text-xs font-medium text-zinc-600 mb-1.5">
                   Court
                 </label>
                 <select
                   value={selectedCourt}
                   onChange={(e) => setSelectedCourt(e.target.value)}
                   disabled={courtsLoading}
-                  className="w-full px-3 py-2.5 bg-background border border-border rounded-lg text-sm text-text-primary focus:outline-none cursor-pointer disabled:opacity-50"
+                  className="w-full px-3 py-2.5 bg-[#050505] border border-white/[0.04] rounded-lg text-sm text-white focus:outline-none cursor-pointer disabled:opacity-50"
                 >
                   <option value="">
                     {courtsLoading ? "Loading courts..." : "Select a court"}
@@ -281,26 +281,26 @@ export default function NewBookingPage() {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {/* Date */}
                 <div>
-                  <label className="block text-xs font-medium text-text-muted mb-1.5">
+                  <label className="block text-xs font-medium text-zinc-600 mb-1.5">
                     Date
                   </label>
                   <input
                     type="date"
                     value={selectedDate}
                     onChange={(e) => setSelectedDate(e.target.value)}
-                    className="w-full px-3 py-2.5 bg-background border border-border rounded-lg text-sm text-text-primary focus:outline-none"
+                    className="w-full px-3 py-2.5 bg-[#050505] border border-white/[0.04] rounded-lg text-sm text-white focus:outline-none"
                   />
                 </div>
 
                 {/* Start Time */}
                 <div>
-                  <label className="block text-xs font-medium text-text-muted mb-1.5">
+                  <label className="block text-xs font-medium text-zinc-600 mb-1.5">
                     Start Time
                   </label>
                   <select
                     value={selectedTime}
                     onChange={(e) => setSelectedTime(e.target.value)}
-                    className="w-full px-3 py-2.5 bg-background border border-border rounded-lg text-sm text-text-primary focus:outline-none cursor-pointer"
+                    className="w-full px-3 py-2.5 bg-[#050505] border border-white/[0.04] rounded-lg text-sm text-white focus:outline-none cursor-pointer"
                   >
                     <option value="">Select time</option>
                     {timeSlots.map((t) => {
@@ -322,7 +322,7 @@ export default function NewBookingPage() {
 
                 {/* Duration */}
                 <div>
-                  <label className="block text-xs font-medium text-text-muted mb-1.5">
+                  <label className="block text-xs font-medium text-zinc-600 mb-1.5">
                     Duration
                   </label>
                   <div className="flex gap-2">
@@ -333,8 +333,8 @@ export default function NewBookingPage() {
                         className={cn(
                           "flex-1 px-3 py-2.5 rounded-lg text-sm font-medium border transition-all duration-200",
                           selectedDuration === d.value
-                            ? "bg-emerald/10 border-emerald/30 text-emerald"
-                            : "bg-background border-border text-text-secondary hover:border-border-subtle"
+                            ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400"
+                            : "bg-[#050505] border-white/[0.04] text-zinc-400 hover:border-white/[0.04]"
                         )}
                       >
                         {d.label}
@@ -347,10 +347,10 @@ export default function NewBookingPage() {
           </div>
 
           {/* Booking Type */}
-          <div className="bg-card border border-border-subtle rounded-xl overflow-hidden">
-            <div className="px-6 py-4 border-b border-border">
-              <h2 className="text-sm font-semibold text-text-primary flex items-center gap-2">
-                <FileText className="w-4 h-4 text-text-muted" />
+          <div className="bg-[#0e0e0e] border border-white/[0.04] rounded-xl overflow-hidden">
+            <div className="px-6 py-4 border-b border-white/[0.04]">
+              <h2 className="text-sm font-semibold text-white flex items-center gap-2">
+                <FileText className="w-4 h-4 text-zinc-600" />
                 Booking Type
               </h2>
             </div>
@@ -365,8 +365,8 @@ export default function NewBookingPage() {
                       className={cn(
                         "flex flex-col items-center gap-2 p-4 rounded-xl border transition-all duration-200",
                         bookingType === type.value
-                          ? "bg-emerald/10 border-emerald/30 text-emerald"
-                          : "bg-background border-border text-text-secondary hover:border-border-subtle"
+                          ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400"
+                          : "bg-[#050505] border-white/[0.04] text-zinc-400 hover:border-white/[0.04]"
                       )}
                     >
                       <Icon className="w-5 h-5" />
@@ -378,12 +378,12 @@ export default function NewBookingPage() {
 
               {/* Event extras */}
               {isEvent && (
-                <div className="mt-4 p-4 bg-background rounded-xl border border-border-subtle space-y-4">
-                  <p className="text-xs font-medium text-text-muted uppercase tracking-wider">
+                <div className="mt-4 p-4 bg-[#050505] rounded-xl border border-white/[0.04] space-y-4">
+                  <p className="text-xs font-medium text-zinc-600 uppercase tracking-wider">
                     Event Details
                   </p>
                   <div>
-                    <label className="block text-xs font-medium text-text-muted mb-1.5">
+                    <label className="block text-xs font-medium text-zinc-600 mb-1.5">
                       Guest Count
                     </label>
                     <input
@@ -391,7 +391,7 @@ export default function NewBookingPage() {
                       placeholder="e.g. 25"
                       value={guestCount}
                       onChange={(e) => setGuestCount(e.target.value)}
-                      className="w-full px-3 py-2.5 bg-card border border-border rounded-lg text-sm text-text-primary placeholder:text-text-muted focus:outline-none"
+                      className="w-full px-3 py-2.5 bg-[#0e0e0e] border border-white/[0.04] rounded-lg text-sm text-white placeholder:text-zinc-600 focus:outline-none"
                     />
                   </div>
                   <div className="flex gap-6">
@@ -400,10 +400,10 @@ export default function NewBookingPage() {
                         type="checkbox"
                         checked={decorations}
                         onChange={(e) => setDecorations(e.target.checked)}
-                        className="w-4 h-4 rounded border-border bg-card text-emerald accent-emerald"
+                        className="w-4 h-4 rounded border-white/[0.04] bg-[#0e0e0e] text-emerald accent-emerald"
                       />
-                      <span className="flex items-center gap-1.5 text-sm text-text-secondary">
-                        <Sparkles className="w-3.5 h-3.5 text-text-muted" />
+                      <span className="flex items-center gap-1.5 text-sm text-zinc-400">
+                        <Sparkles className="w-3.5 h-3.5 text-zinc-600" />
                         Decorations
                       </span>
                     </label>
@@ -412,16 +412,16 @@ export default function NewBookingPage() {
                         type="checkbox"
                         checked={catering}
                         onChange={(e) => setCatering(e.target.checked)}
-                        className="w-4 h-4 rounded border-border bg-card text-emerald accent-emerald"
+                        className="w-4 h-4 rounded border-white/[0.04] bg-[#0e0e0e] text-emerald accent-emerald"
                       />
-                      <span className="flex items-center gap-1.5 text-sm text-text-secondary">
-                        <UtensilsCrossed className="w-3.5 h-3.5 text-text-muted" />
+                      <span className="flex items-center gap-1.5 text-sm text-zinc-400">
+                        <UtensilsCrossed className="w-3.5 h-3.5 text-zinc-600" />
                         Catering
                       </span>
                     </label>
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-text-muted mb-1.5">
+                    <label className="block text-xs font-medium text-zinc-600 mb-1.5">
                       Special Requests
                     </label>
                     <textarea
@@ -429,7 +429,7 @@ export default function NewBookingPage() {
                       value={specialRequests}
                       onChange={(e) => setSpecialRequests(e.target.value)}
                       rows={3}
-                      className="w-full px-3 py-2.5 bg-card border border-border rounded-lg text-sm text-text-primary placeholder:text-text-muted focus:outline-none resize-none"
+                      className="w-full px-3 py-2.5 bg-[#0e0e0e] border border-white/[0.04] rounded-lg text-sm text-white placeholder:text-zinc-600 focus:outline-none resize-none"
                     />
                   </div>
                 </div>
@@ -440,9 +440,9 @@ export default function NewBookingPage() {
 
         {/* Booking Summary Sidebar */}
         <div>
-          <div className="bg-card border border-border-subtle rounded-xl overflow-hidden sticky top-24">
-            <div className="px-6 py-4 border-b border-border">
-              <h2 className="text-sm font-semibold text-text-primary">
+          <div className="bg-[#0e0e0e] border border-white/[0.04] rounded-xl overflow-hidden sticky top-24">
+            <div className="px-6 py-4 border-b border-white/[0.04]">
+              <h2 className="text-sm font-semibold text-white">
                 Booking Summary
               </h2>
             </div>
@@ -450,27 +450,27 @@ export default function NewBookingPage() {
               {/* Summary items */}
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs text-text-muted">Customer</span>
-                  <span className="text-sm text-text-primary font-medium">
+                  <span className="text-xs text-zinc-600">Customer</span>
+                  <span className="text-sm text-white font-medium">
                     {customerName || "--"}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-xs text-text-muted">Phone</span>
-                  <span className="text-sm text-text-secondary">
+                  <span className="text-xs text-zinc-600">Phone</span>
+                  <span className="text-sm text-zinc-400">
                     {customerPhone ? `+962 ${customerPhone}` : "--"}
                   </span>
                 </div>
                 <div className="h-px bg-border" />
                 <div className="flex items-center justify-between">
-                  <span className="text-xs text-text-muted">Court</span>
-                  <span className="text-sm text-text-primary font-medium">
+                  <span className="text-xs text-zinc-600">Court</span>
+                  <span className="text-sm text-white font-medium">
                     {court?.name || "--"}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-xs text-text-muted">Date</span>
-                  <span className="text-sm text-text-secondary">
+                  <span className="text-xs text-zinc-600">Date</span>
+                  <span className="text-sm text-zinc-400">
                     {selectedDate
                       ? new Date(selectedDate).toLocaleDateString("en-GB", {
                           day: "numeric",
@@ -481,22 +481,22 @@ export default function NewBookingPage() {
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-xs text-text-muted">Time</span>
-                  <span className="text-sm text-text-secondary">
+                  <span className="text-xs text-zinc-600">Time</span>
+                  <span className="text-sm text-zinc-400">
                     {selectedTime && endTime
                       ? `${formatTime(selectedTime)} - ${formatTime(endTime)}`
                       : "--"}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-xs text-text-muted">Duration</span>
-                  <span className="text-sm text-text-secondary">
+                  <span className="text-xs text-zinc-600">Duration</span>
+                  <span className="text-sm text-zinc-400">
                     {selectedDuration} hour{selectedDuration > 1 ? "s" : ""}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-xs text-text-muted">Type</span>
-                  <span className="text-sm text-text-secondary capitalize">
+                  <span className="text-xs text-zinc-600">Type</span>
+                  <span className="text-sm text-zinc-400 capitalize">
                     {bookingType === "regular"
                       ? "Regular"
                       : bookingType === "birthday"
@@ -510,26 +510,26 @@ export default function NewBookingPage() {
                     <div className="h-px bg-border" />
                     {guestCount && (
                       <div className="flex items-center justify-between">
-                        <span className="text-xs text-text-muted">Guests</span>
-                        <span className="text-sm text-text-secondary">
+                        <span className="text-xs text-zinc-600">Guests</span>
+                        <span className="text-sm text-zinc-400">
                           {guestCount}
                         </span>
                       </div>
                     )}
                     {decorations && (
                       <div className="flex items-center justify-between">
-                        <span className="text-xs text-text-muted">
+                        <span className="text-xs text-zinc-600">
                           Decorations
                         </span>
-                        <span className="text-sm text-emerald">Included</span>
+                        <span className="text-sm text-emerald-400">Included</span>
                       </div>
                     )}
                     {catering && (
                       <div className="flex items-center justify-between">
-                        <span className="text-xs text-text-muted">
+                        <span className="text-xs text-zinc-600">
                           Catering
                         </span>
-                        <span className="text-sm text-emerald">Included</span>
+                        <span className="text-sm text-emerald-400">Included</span>
                       </div>
                     )}
                   </>
@@ -540,29 +540,29 @@ export default function NewBookingPage() {
               <div className="h-px bg-border" />
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs text-text-muted">
+                  <span className="text-xs text-zinc-600">
                     Base ({pricePerHour} JOD x {selectedDuration}h)
                   </span>
-                  <span className="text-sm text-text-secondary">
+                  <span className="text-sm text-zinc-400">
                     {basePrice} JOD
                   </span>
                 </div>
                 {eventSurcharge > 0 && (
                   <div className="flex items-center justify-between">
-                    <span className="text-xs text-text-muted">
+                    <span className="text-xs text-zinc-600">
                       Event Surcharge
                     </span>
-                    <span className="text-sm text-text-secondary">
+                    <span className="text-sm text-zinc-400">
                       +{eventSurcharge} JOD
                     </span>
                   </div>
                 )}
                 <div className="h-px bg-border" />
                 <div className="flex items-center justify-between">
-                  <span className="text-sm font-semibold text-text-primary">
+                  <span className="text-sm font-semibold text-white">
                     Total
                   </span>
-                  <span className="text-lg font-bold text-emerald">
+                  <span className="text-lg font-bold text-emerald-400">
                     {totalPrice} JOD
                   </span>
                 </div>
@@ -572,7 +572,7 @@ export default function NewBookingPage() {
               <button
                 onClick={handleSubmit}
                 disabled={submitting}
-                className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-emerald hover:bg-emerald-dark text-white text-sm font-semibold rounded-lg transition-all duration-200 mt-2 disabled:opacity-50"
+                className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 hover:-translate-y-[1px] hover:shadow-lg hover:shadow-emerald-500/25 text-white text-sm font-semibold rounded-lg transition-all duration-200 mt-2 disabled:opacity-50"
               >
                 {submitting ? (
                   <>

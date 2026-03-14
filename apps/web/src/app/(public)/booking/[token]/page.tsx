@@ -190,17 +190,21 @@ export default function PublicBookingPage() {
   // RENDER
   // =============================================
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white">
-      <div className="max-w-lg mx-auto px-4 py-8 sm:py-12">
+    <div className="min-h-screen bg-[#050505] text-white relative overflow-hidden">
+      {/* Ambient glow */}
+      <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] rounded-full bg-emerald-500/[0.03] blur-[100px]" />
+      <div className="absolute bottom-[-15%] right-[-10%] w-[400px] h-[400px] rounded-full bg-emerald-500/[0.02] blur-[80px]" />
+
+      <div className="relative z-10 max-w-lg mx-auto px-4 py-8 sm:py-12">
         {/* ---- Header / Branding ---- */}
         <header className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-emerald-500/10 mb-4">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-emerald-500/5 border border-emerald-500/20 mb-5 shadow-lg shadow-emerald-500/10">
             <MapPin className="w-7 h-7 text-emerald-400" />
           </div>
-          <h1 className="text-xl font-bold text-white tracking-tight">
+          <h1 className="text-[22px] font-bold text-white tracking-[-0.02em]">
             Al Daoud Football Courts
           </h1>
-          <p className="text-emerald-400 font-arabic text-lg mt-1">
+          <p className="text-emerald-400/70 text-[13px] font-medium mt-2 tracking-wide font-arabic">
             ملاعب الداعود لكرة القدم
           </p>
         </header>
@@ -227,9 +231,9 @@ export default function PublicBookingPage() {
         {view === 'details' && (
           <>
             {/* Booking Card */}
-            <div className="bg-[#1a1a1a] border border-[#2a2a2a] rounded-2xl overflow-hidden">
+            <div className="bg-[#0e0e0e] border border-white/[0.06] rounded-2xl overflow-hidden">
               {/* Card header */}
-              <div className="px-5 py-4 border-b border-[#222]">
+              <div className="px-5 py-4 border-b border-white/[0.04]">
                 <div className="flex items-center justify-between">
                   <h2 className="text-base font-semibold text-white">
                     Booking Details
@@ -342,7 +346,7 @@ export default function PublicBookingPage() {
 
               {/* Action buttons — only when confirmed */}
               {booking.status === 'confirmed' && (
-                <div className="px-5 py-4 border-t border-[#222] flex flex-col sm:flex-row gap-3">
+                <div className="px-5 py-4 border-t border-white/[0.04] flex flex-col sm:flex-row gap-3">
                   <button
                     onClick={() => {
                       setNewDate(booking.date);
@@ -371,7 +375,7 @@ export default function PublicBookingPage() {
         {/* CANCEL CONFIRMATION VIEW */}
         {/* ============================================ */}
         {view === 'cancel-confirm' && (
-          <div className="bg-[#1a1a1a] border border-[#2a2a2a] rounded-2xl overflow-hidden">
+          <div className="bg-[#0e0e0e] border border-white/[0.06] rounded-2xl overflow-hidden">
             <div className="px-5 py-6 text-center space-y-4">
               <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-red-500/10 mx-auto">
                 <AlertTriangle className="w-7 h-7 text-red-400" />
@@ -400,7 +404,7 @@ export default function PublicBookingPage() {
                 <button
                   onClick={() => setView('details')}
                   disabled={loading}
-                  className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-[#333] text-zinc-300 text-sm font-medium hover:bg-white/5 transition-all duration-200 disabled:opacity-50"
+                  className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-white/[0.08] text-zinc-300 text-sm font-medium hover:bg-white/5 transition-all duration-200 disabled:opacity-50"
                 >
                   <ArrowLeft className="w-4 h-4" />
                   No, Go Back
@@ -426,8 +430,8 @@ export default function PublicBookingPage() {
         {/* MODIFY VIEW */}
         {/* ============================================ */}
         {view === 'modify' && (
-          <div className="bg-[#1a1a1a] border border-[#2a2a2a] rounded-2xl overflow-hidden">
-            <div className="px-5 py-4 border-b border-[#222] flex items-center gap-3">
+          <div className="bg-[#0e0e0e] border border-white/[0.06] rounded-2xl overflow-hidden">
+            <div className="px-5 py-4 border-b border-white/[0.04] flex items-center gap-3">
               <button
                 onClick={() => setView('details')}
                 className="p-1.5 rounded-lg text-zinc-400 hover:text-white hover:bg-white/5 transition-all"
@@ -441,7 +445,7 @@ export default function PublicBookingPage() {
 
             <div className="px-5 py-5 space-y-5">
               {/* Current booking info */}
-              <div className="bg-[#111] border border-[#222] rounded-xl px-4 py-3">
+              <div className="bg-[#0a0a0a] border border-white/[0.04] rounded-xl px-4 py-3">
                 <p className="text-xs text-zinc-500 uppercase tracking-wider font-medium mb-1">
                   Current Booking
                 </p>
@@ -463,7 +467,7 @@ export default function PublicBookingPage() {
                     value={newDate}
                     onChange={(e) => setNewDate(e.target.value)}
                     min={new Date().toISOString().split('T')[0]}
-                    className="w-full pl-10 pr-4 py-2.5 bg-[#111] border border-[#2a2a2a] rounded-xl text-sm text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/30 transition-all"
+                    className="w-full pl-10 pr-4 py-2.5 bg-[#0a0a0a] border border-white/[0.06] rounded-xl text-sm text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/30 transition-all"
                   />
                 </div>
               </div>
@@ -478,7 +482,7 @@ export default function PublicBookingPage() {
                   <select
                     value={newTime}
                     onChange={(e) => setNewTime(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2.5 bg-[#111] border border-[#2a2a2a] rounded-xl text-sm text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/30 transition-all appearance-none cursor-pointer"
+                    className="w-full pl-10 pr-4 py-2.5 bg-[#0a0a0a] border border-white/[0.06] rounded-xl text-sm text-white focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/30 transition-all appearance-none cursor-pointer"
                   >
                     {TIME_SLOTS.map((slot) => (
                       <option key={slot} value={slot}>

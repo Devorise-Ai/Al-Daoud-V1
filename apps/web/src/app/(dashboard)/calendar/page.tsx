@@ -69,7 +69,7 @@ function formatDateStr(date: Date): string {
 const hours = Array.from({ length: 16 }, (_, i) => i + 8); // 8AM to 11PM
 
 const courtColors: Record<number, { bg: string; border: string; text: string }> = {
-  1: { bg: "bg-emerald/20", border: "border-emerald/40", text: "text-emerald" },
+  1: { bg: "bg-emerald-500/20", border: "border-emerald-500/40", text: "text-emerald-400" },
   2: { bg: "bg-blue-500/20", border: "border-blue-500/40", text: "text-blue-400" },
   3: { bg: "bg-violet-500/20", border: "border-violet-500/40", text: "text-violet-400" },
   4: { bg: "bg-amber-500/20", border: "border-amber-500/40", text: "text-amber-400" },
@@ -190,16 +190,16 @@ export default function CalendarPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-text-primary tracking-tight">
+          <h1 className="text-[22px] font-bold text-white tracking-[-0.02em]">
             Calendar
           </h1>
-          <p className="text-text-secondary text-sm mt-1">
+          <p className="text-zinc-400 text-sm mt-1">
             Weekly court schedule overview
           </p>
         </div>
         <Link
           href="/bookings/new"
-          className="flex items-center gap-2 px-4 py-2.5 bg-emerald hover:bg-emerald-dark text-white text-sm font-medium rounded-lg transition-all duration-200"
+          className="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 hover:-translate-y-[1px] hover:shadow-lg hover:shadow-emerald-500/25 text-white text-sm font-medium rounded-lg transition-all duration-200"
         >
           <Plus className="w-4 h-4" />
           New Booking
@@ -207,32 +207,32 @@ export default function CalendarPage() {
       </div>
 
       {/* Week Navigation */}
-      <div className="bg-card border border-border-subtle rounded-xl p-4">
+      <div className="bg-[#0e0e0e] border border-white/[0.04] rounded-xl p-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <button
               onClick={goToPreviousWeek}
-              className="p-2 rounded-lg text-text-muted hover:text-text-primary hover:bg-white/[0.06] transition-all duration-200"
+              className="p-2 rounded-lg text-zinc-600 hover:text-white hover:bg-white/[0.06] transition-all duration-200"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={goToToday}
-              className="px-3 py-1.5 rounded-lg text-sm font-medium text-text-secondary hover:text-text-primary hover:bg-white/[0.06] border border-border transition-all duration-200"
+              className="px-3 py-1.5 rounded-lg text-sm font-medium text-zinc-400 hover:text-white hover:bg-white/[0.06] border border-white/[0.04] transition-all duration-200"
             >
               Today
             </button>
             <button
               onClick={goToNextWeek}
-              className="p-2 rounded-lg text-text-muted hover:text-text-primary hover:bg-white/[0.06] transition-all duration-200"
+              className="p-2 rounded-lg text-zinc-600 hover:text-white hover:bg-white/[0.06] transition-all duration-200"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
           </div>
 
           <div className="flex items-center gap-2">
-            <Calendar className="w-4 h-4 text-text-muted" />
-            <span className="text-sm font-semibold text-text-primary">
+            <Calendar className="w-4 h-4 text-zinc-600" />
+            <span className="text-sm font-semibold text-white">
               {formatShortDate(weekDays[0])} - {formatShortDate(weekDays[6])},{" "}
               {weekDays[6].getFullYear()}
             </span>
@@ -252,7 +252,7 @@ export default function CalendarPage() {
                       color.border
                     )}
                   />
-                  <span className="text-xs text-text-muted">Court {courtId}</span>
+                  <span className="text-xs text-zinc-600">Court {courtId}</span>
                 </div>
               );
             })}
@@ -262,17 +262,17 @@ export default function CalendarPage() {
 
       {/* Loading indicator */}
       {loading && (
-        <div className="text-text-muted text-sm text-center py-2">
+        <div className="text-zinc-600 text-sm text-center py-2">
           Loading calendar...
         </div>
       )}
 
       {/* Calendar Grid */}
-      <div className="bg-card border border-border-subtle rounded-xl overflow-hidden">
+      <div className="bg-[#0e0e0e] border border-white/[0.04] rounded-xl overflow-hidden">
         <div className="overflow-x-auto">
           <div className="min-w-[900px]">
             {/* Day Headers */}
-            <div className="grid grid-cols-[80px_repeat(7,1fr)] border-b border-border">
+            <div className="grid grid-cols-[80px_repeat(7,1fr)] border-b border-white/[0.04]">
               <div className="p-3" />
               {weekDays.map((day, i) => {
                 const header = formatDayHeader(day);
@@ -284,17 +284,17 @@ export default function CalendarPage() {
                   <div
                     key={i}
                     className={cn(
-                      "p-3 text-center border-l border-border",
-                      isToday && "bg-emerald/5"
+                      "p-3 text-center border-l border-white/[0.04]",
+                      isToday && "bg-emerald-500/5"
                     )}
                   >
-                    <p className="text-xs text-text-muted uppercase tracking-wider">
+                    <p className="text-xs text-zinc-600 uppercase tracking-wider">
                       {header.day}
                     </p>
                     <p
                       className={cn(
                         "text-lg font-bold mt-0.5",
-                        isToday ? "text-emerald" : "text-text-primary"
+                        isToday ? "text-emerald-400" : "text-white"
                       )}
                     >
                       {header.date}
@@ -329,12 +329,12 @@ export default function CalendarPage() {
               {hours.map((hour) => (
                 <div
                   key={hour}
-                  className="grid grid-cols-[80px_repeat(7,1fr)] border-b border-border last:border-b-0"
+                  className="grid grid-cols-[80px_repeat(7,1fr)] border-b border-white/[0.04] last:border-b-0"
                   style={{ height: "56px" }}
                 >
                   {/* Time label */}
                   <div className="p-2 flex items-start justify-end pr-3">
-                    <span className="text-xs text-text-muted">
+                    <span className="text-xs text-zinc-600">
                       {hour === 0
                         ? "12 AM"
                         : hour < 12
@@ -361,8 +361,8 @@ export default function CalendarPage() {
                         <div
                           key={dayIndex}
                           className={cn(
-                            "border-l border-border relative p-1",
-                            isToday && "bg-emerald/[0.03]"
+                            "border-l border-white/[0.04] relative p-1",
+                            isToday && "bg-emerald-500/[0.03]"
                           )}
                         >
                           <Link
@@ -385,11 +385,11 @@ export default function CalendarPage() {
                             >
                               {booking.courtName}
                             </p>
-                            <p className="text-[10px] text-text-secondary truncate mt-0.5">
+                            <p className="text-[10px] text-zinc-400 truncate mt-0.5">
                               {booking.customer}
                             </p>
                             {durationHours >= 2 && (
-                              <p className="text-[10px] text-text-muted mt-0.5">
+                              <p className="text-[10px] text-zinc-600 mt-0.5">
                                 {booking.startHour <= 12
                                   ? `${booking.startHour}${booking.startHour < 12 ? "AM" : "PM"}`
                                   : `${booking.startHour - 12}PM`}{" "}
@@ -409,8 +409,8 @@ export default function CalendarPage() {
                         <div
                           key={dayIndex}
                           className={cn(
-                            "border-l border-border",
-                            isToday && "bg-emerald/[0.03]"
+                            "border-l border-white/[0.04]",
+                            isToday && "bg-emerald-500/[0.03]"
                           )}
                         />
                       );
@@ -421,8 +421,8 @@ export default function CalendarPage() {
                         key={dayIndex}
                         href="/bookings/new"
                         className={cn(
-                          "border-l border-border hover:bg-white/[0.02] transition-colors",
-                          isToday && "bg-emerald/[0.03]"
+                          "border-l border-white/[0.04] hover:bg-white/[0.02] transition-colors",
+                          isToday && "bg-emerald-500/[0.03]"
                         )}
                       />
                     );

@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #ededed;
-  --card: #1a1a1a;
-  --card-hover: #222222;
-  --sidebar: #111111;
-  --border: #222222;
-  --border-subtle: #2a2a2a;
+  --background: #050505;
+  --foreground: #e4e4e7;
+  --card: #0e0e0e;
+  --card-hover: #141414;
+  --sidebar: #0a0a0a;
+  --border: #1a1a1a;
+  --border-subtle: #ffffff08;
   --emerald: #10b981;
   --emerald-dark: #059669;
   --emerald-light: #34d399;
-  --text-primary: #ffffff;
+  --text-primary: #f4f4f5;
   --text-secondary: #a1a1aa;
   --text-muted: #52525b;
   --danger: #ef4444;
@@ -34,7 +34,7 @@
   --color-text-muted: var(--text-muted);
   --color-danger: var(--danger);
   --color-warning: var(--warning);
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-outfit);
   --font-arabic: var(--font-noto-arabic);
 }
 
@@ -50,55 +50,63 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Scrollbar styling */
+/* Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
-
 ::-webkit-scrollbar-track {
   background: transparent;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 3px;
+  background: #222;
+  border-radius: 4px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #444;
 }
 
-/* Selection styling */
+/* Selection */
 ::selection {
-  background-color: rgba(16, 185, 129, 0.3);
+  background-color: rgba(16, 185, 129, 0.25);
   color: #fff;
 }
 
-/* Focus ring */
+/* Focus */
 *:focus-visible {
   outline: 2px solid var(--emerald);
   outline-offset: 2px;
 }
 
-/* Input styling */
+/* Inputs */
 input,
 textarea,
 select {
-  background: var(--card);
-  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   color: var(--foreground);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 input:focus,
 textarea:focus,
 select:focus {
-  border-color: var(--emerald);
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.4);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 input::placeholder,
 textarea::placeholder {
   color: var(--text-muted);
+}
+
+/* Smooth page transitions */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+main > * {
+  animation: fadeIn 0.4s ease-out;
 }

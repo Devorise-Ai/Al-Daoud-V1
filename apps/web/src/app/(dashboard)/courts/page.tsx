@@ -36,9 +36,9 @@ const typeConfig: Record<
 > = {
   "5v5": {
     label: "5v5",
-    bg: "bg-emerald/10",
-    text: "text-emerald",
-    border: "border-l-emerald",
+    bg: "bg-emerald-500/10",
+    text: "text-emerald-400",
+    border: "border-l-emerald-500",
   },
   "7v7": {
     label: "7v7",
@@ -90,10 +90,10 @@ export default function CourtsPage() {
       <div className="max-w-7xl mx-auto space-y-6">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-text-primary tracking-tight">
+            <h1 className="text-[22px] font-bold text-white tracking-[-0.02em]">
               Courts
             </h1>
-            <p className="text-text-secondary text-sm mt-1">
+            <p className="text-zinc-400 text-sm mt-1">
               Manage your football courts and pricing
             </p>
           </div>
@@ -102,7 +102,7 @@ export default function CourtsPage() {
           {[1, 2, 3, 4].map((i) => (
             <div
               key={i}
-              className="bg-card border border-border-subtle rounded-xl overflow-hidden animate-pulse"
+              className="bg-[#0e0e0e] border border-white/[0.04] rounded-xl overflow-hidden animate-pulse"
             >
               <div className="p-6 space-y-4">
                 <div className="h-5 bg-white/[0.06] rounded w-2/3" />
@@ -121,14 +121,14 @@ export default function CourtsPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-text-primary tracking-tight">
+          <h1 className="text-[22px] font-bold text-white tracking-[-0.02em]">
             Courts
           </h1>
-          <p className="text-text-secondary text-sm mt-1">
+          <p className="text-zinc-400 text-sm mt-1">
             Manage your football courts and pricing
           </p>
         </div>
-        <button className="flex items-center gap-2 px-4 py-2.5 bg-emerald hover:bg-emerald-dark text-white text-sm font-medium rounded-lg transition-all duration-200">
+        <button className="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 hover:-translate-y-[1px] hover:shadow-lg hover:shadow-emerald-500/25 text-white text-sm font-medium rounded-lg transition-all duration-200">
           <Plus className="w-4 h-4" />
           Add Court
         </button>
@@ -142,7 +142,7 @@ export default function CourtsPage() {
             <div
               key={court.id}
               className={cn(
-                "bg-card border border-border-subtle rounded-xl overflow-hidden transition-all duration-200 hover:border-border",
+                "bg-[#0e0e0e] border border-white/[0.04] rounded-xl overflow-hidden transition-all duration-200 hover:border-white/[0.08]",
                 "border-l-[3px]",
                 type.border
               )}
@@ -151,9 +151,9 @@ export default function CourtsPage() {
               <div className="flex items-start justify-between p-6 pb-4">
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-3 flex-wrap">
-                    <h3 className="text-lg font-semibold text-text-primary">
+                    <h3 className="text-lg font-semibold text-white">
                       {court.name}{" "}
-                      <span className="text-text-muted font-normal">
+                      <span className="text-zinc-600 font-normal">
                         &mdash; {court.name_ar}
                       </span>
                     </h3>
@@ -175,14 +175,14 @@ export default function CourtsPage() {
                   className={cn(
                     "flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-200 border shrink-0",
                     court.is_active
-                      ? "bg-emerald/10 text-emerald border-emerald/20 hover:bg-emerald/20"
+                      ? "bg-emerald-500/10 text-emerald border-emerald-500/20 hover:bg-emerald-500/20"
                       : "bg-red-500/10 text-red-400 border-red-500/20 hover:bg-red-500/20"
                   )}
                 >
                   <span
                     className={cn(
                       "w-2 h-2 rounded-full",
-                      court.is_active ? "bg-emerald" : "bg-red-400"
+                      court.is_active ? "bg-emerald-500" : "bg-red-400"
                     )}
                   />
                   {court.is_active ? "Active" : "Inactive"}
@@ -194,14 +194,14 @@ export default function CourtsPage() {
                 <div className="grid grid-cols-2 gap-4">
                   {/* Surface */}
                   <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-lg bg-emerald/10 flex items-center justify-center shrink-0">
-                      <Leaf className="w-4 h-4 text-emerald" />
+                    <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center shrink-0">
+                      <Leaf className="w-4 h-4 text-emerald-400" />
                     </div>
                     <div>
-                      <p className="text-[10px] text-text-muted uppercase tracking-wider font-medium">
+                      <p className="text-[10px] text-zinc-600 uppercase tracking-wider font-medium">
                         Surface
                       </p>
-                      <p className="text-sm text-text-secondary font-medium">
+                      <p className="text-sm text-zinc-400 font-medium">
                         {court.surface}
                       </p>
                     </div>
@@ -213,10 +213,10 @@ export default function CourtsPage() {
                       <Users className="w-4 h-4 text-blue-400" />
                     </div>
                     <div>
-                      <p className="text-[10px] text-text-muted uppercase tracking-wider font-medium">
+                      <p className="text-[10px] text-zinc-600 uppercase tracking-wider font-medium">
                         Capacity
                       </p>
-                      <p className="text-sm text-text-secondary font-medium">
+                      <p className="text-sm text-zinc-400 font-medium">
                         {court.capacity} Players
                       </p>
                     </div>
@@ -225,19 +225,19 @@ export default function CourtsPage() {
               </div>
 
               {/* Pricing Section */}
-              <div className="mx-6 mb-4 p-3.5 bg-white/[0.02] rounded-lg border border-border">
+              <div className="mx-6 mb-4 p-3.5 bg-white/[0.02] rounded-lg border border-white/[0.04]">
                 <div className="flex items-center gap-2 mb-2.5">
-                  <DollarSign className="w-3.5 h-3.5 text-text-muted" />
-                  <span className="text-[10px] text-text-muted uppercase tracking-wider font-medium">
+                  <DollarSign className="w-3.5 h-3.5 text-zinc-600" />
+                  <span className="text-[10px] text-zinc-600 uppercase tracking-wider font-medium">
                     Pricing
                   </span>
                 </div>
                 <div className="flex items-center gap-6">
                   <div>
-                    <p className="text-xs text-text-muted">Off-Peak</p>
-                    <p className="text-base font-bold text-text-primary">
+                    <p className="text-xs text-zinc-600">Off-Peak</p>
+                    <p className="text-base font-bold text-white">
                       {court.hourly_rate}{" "}
-                      <span className="text-xs font-normal text-text-muted">
+                      <span className="text-xs font-normal text-zinc-600">
                         JOD/hr
                       </span>
                     </p>
@@ -245,9 +245,9 @@ export default function CourtsPage() {
                   <div className="w-px h-8 bg-border" />
                   <div>
                     <p className="text-xs text-amber-400">Peak</p>
-                    <p className="text-base font-bold text-text-primary">
+                    <p className="text-base font-bold text-white">
                       {court.peak_rate}{" "}
-                      <span className="text-xs font-normal text-text-muted">
+                      <span className="text-xs font-normal text-zinc-600">
                         JOD/hr
                       </span>
                     </p>
@@ -256,18 +256,18 @@ export default function CourtsPage() {
               </div>
 
               {/* Card Footer - Actions */}
-              <div className="flex items-center gap-2 px-6 py-4 border-t border-border">
+              <div className="flex items-center gap-2 px-6 py-4 border-t border-white/[0.04]">
                 <a
                   href={court.maps_link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium text-text-secondary hover:text-text-primary hover:bg-white/[0.06] border border-border transition-all duration-200"
+                  className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium text-zinc-400 hover:text-white hover:bg-white/[0.06] border border-white/[0.04] transition-all duration-200"
                 >
                   <ExternalLink className="w-3.5 h-3.5" />
                   Google Maps
                 </a>
                 <div className="flex-1" />
-                <button className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium text-text-secondary hover:text-text-primary hover:bg-white/[0.06] border border-border transition-all duration-200">
+                <button className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium text-zinc-400 hover:text-white hover:bg-white/[0.06] border border-white/[0.04] transition-all duration-200">
                   <Pencil className="w-3.5 h-3.5" />
                   Edit
                 </button>

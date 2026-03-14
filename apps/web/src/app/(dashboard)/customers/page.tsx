@@ -113,10 +113,10 @@ export default function CustomersPage() {
     <div className="max-w-7xl mx-auto space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-text-primary tracking-tight">
+        <h1 className="text-[22px] font-bold text-white tracking-[-0.02em]">
           Customers
         </h1>
-        <p className="text-text-secondary text-sm mt-1">
+        <p className="text-zinc-400 text-sm mt-1">
           Manage your customer base and track engagement
         </p>
       </div>
@@ -128,14 +128,14 @@ export default function CustomersPage() {
           return (
             <div
               key={stat.label}
-              className="bg-card border border-border-subtle rounded-xl p-5 transition-all duration-200 hover:border-border"
+              className="bg-[#0e0e0e] border border-white/[0.04] rounded-xl p-5 transition-all duration-200 hover:border-white/[0.08]"
             >
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-text-muted font-medium uppercase tracking-wider">
+                  <p className="text-xs text-zinc-600 font-medium uppercase tracking-wider">
                     {stat.label}
                   </p>
-                  <p className="text-2xl font-bold text-text-primary mt-1">
+                  <p className="text-2xl font-bold text-white mt-1">
                     {stat.value}
                   </p>
                 </div>
@@ -151,7 +151,7 @@ export default function CustomersPage() {
       {/* Filter Bar */}
       <div className="flex flex-col sm:flex-row gap-3">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-600" />
           <input
             type="text"
             placeholder="Search by name or phone..."
@@ -160,7 +160,7 @@ export default function CustomersPage() {
               setSearch(e.target.value);
               setPage(1);
             }}
-            className="w-full pl-10 pr-4 py-2.5 rounded-lg text-sm bg-card border border-border-subtle focus:border-emerald"
+            className="w-full pl-10 pr-4 py-2.5 rounded-lg text-sm bg-[#0e0e0e] border border-white/[0.04] focus:border-emerald"
           />
         </div>
         <div className="relative">
@@ -170,7 +170,7 @@ export default function CustomersPage() {
               setSegmentFilter(e.target.value as "all" | Segment);
               setPage(1);
             }}
-            className="appearance-none pl-4 pr-10 py-2.5 rounded-lg text-sm bg-card border border-border-subtle focus:border-emerald cursor-pointer min-w-[160px]"
+            className="appearance-none pl-4 pr-10 py-2.5 rounded-lg text-sm bg-[#0e0e0e] border border-white/[0.04] focus:border-emerald cursor-pointer min-w-[160px]"
           >
             <option value="all">All Segments</option>
             <option value="new">New</option>
@@ -178,35 +178,35 @@ export default function CustomersPage() {
             <option value="regular">Regular</option>
             <option value="vip">VIP</option>
           </select>
-          <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted pointer-events-none" />
+          <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-600 pointer-events-none" />
         </div>
       </div>
 
       {/* Table */}
-      <div className="bg-card border border-border-subtle rounded-xl overflow-hidden">
+      <div className="bg-[#0e0e0e] border border-white/[0.04] rounded-xl overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
               <tr className="border-b border-border">
-                <th className="text-left px-6 py-4 text-xs font-semibold text-text-muted uppercase tracking-wider">
+                <th className="text-left px-6 py-4 text-xs font-semibold text-zinc-600 uppercase tracking-wider">
                   Customer
                 </th>
-                <th className="text-left px-6 py-4 text-xs font-semibold text-text-muted uppercase tracking-wider">
+                <th className="text-left px-6 py-4 text-xs font-semibold text-zinc-600 uppercase tracking-wider">
                   Phone
                 </th>
-                <th className="text-left px-6 py-4 text-xs font-semibold text-text-muted uppercase tracking-wider">
+                <th className="text-left px-6 py-4 text-xs font-semibold text-zinc-600 uppercase tracking-wider">
                   Segment
                 </th>
-                <th className="text-left px-6 py-4 text-xs font-semibold text-text-muted uppercase tracking-wider">
+                <th className="text-left px-6 py-4 text-xs font-semibold text-zinc-600 uppercase tracking-wider">
                   Total Bookings
                 </th>
-                <th className="text-left px-6 py-4 text-xs font-semibold text-text-muted uppercase tracking-wider">
+                <th className="text-left px-6 py-4 text-xs font-semibold text-zinc-600 uppercase tracking-wider">
                   Total Spent
                 </th>
-                <th className="text-left px-6 py-4 text-xs font-semibold text-text-muted uppercase tracking-wider">
+                <th className="text-left px-6 py-4 text-xs font-semibold text-zinc-600 uppercase tracking-wider">
                   Last Visit
                 </th>
-                <th className="text-right px-6 py-4 text-xs font-semibold text-text-muted uppercase tracking-wider">
+                <th className="text-right px-6 py-4 text-xs font-semibold text-zinc-600 uppercase tracking-wider">
                   Actions
                 </th>
               </tr>
@@ -214,13 +214,13 @@ export default function CustomersPage() {
             <tbody>
               {loading ? (
                 <tr>
-                  <td colSpan={7} className="px-6 py-12 text-center text-text-muted text-sm">
+                  <td colSpan={7} className="px-6 py-12 text-center text-zinc-600 text-sm">
                     Loading...
                   </td>
                 </tr>
               ) : customers.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="px-6 py-12 text-center text-text-muted text-sm">
+                  <td colSpan={7} className="px-6 py-12 text-center text-zinc-600 text-sm">
                     No customers found
                   </td>
                 </tr>
@@ -248,7 +248,7 @@ export default function CustomersPage() {
                             {initials}
                           </div>
                           <span
-                            className="text-sm font-medium text-text-primary group-hover:text-emerald transition-colors"
+                            className="text-sm font-medium text-white group-hover:text-emerald transition-colors"
                             dir="rtl"
                           >
                             {customer.name || customer.phone}
@@ -256,8 +256,8 @@ export default function CustomersPage() {
                         </Link>
                       </td>
                       <td className="px-6 py-4">
-                        <span className="flex items-center gap-1.5 text-sm text-text-secondary">
-                          <Phone className="w-3.5 h-3.5 text-text-muted" />
+                        <span className="flex items-center gap-1.5 text-sm text-zinc-400">
+                          <Phone className="w-3.5 h-3.5 text-zinc-600" />
                           {customer.phone}
                         </span>
                       </td>
@@ -273,14 +273,14 @@ export default function CustomersPage() {
                           {seg.label}
                         </span>
                       </td>
-                      <td className="px-6 py-4 text-sm text-text-secondary font-medium">
+                      <td className="px-6 py-4 text-sm text-zinc-400 font-medium">
                         {customer.total_bookings}
                       </td>
-                      <td className="px-6 py-4 text-sm text-text-primary font-semibold">
+                      <td className="px-6 py-4 text-sm text-white font-semibold">
                         {customer.total_spent}{" "}
-                        <span className="text-text-muted font-normal text-xs">JOD</span>
+                        <span className="text-zinc-600 font-normal text-xs">JOD</span>
                       </td>
-                      <td className="px-6 py-4 text-sm text-text-secondary">
+                      <td className="px-6 py-4 text-sm text-zinc-400">
                         {customer.last_contact ? new Date(customer.last_contact).toLocaleDateString() : "—"}
                       </td>
                       <td className="px-6 py-4">
@@ -291,7 +291,7 @@ export default function CustomersPage() {
                                 openAction === customer.id ? null : customer.id
                               )
                             }
-                            className="p-2 rounded-lg text-text-muted hover:text-text-primary hover:bg-white/[0.06] transition-all duration-200"
+                            className="p-2 rounded-lg text-zinc-600 hover:text-white hover:bg-white/[0.06] transition-all duration-200"
                           >
                             <MoreHorizontal className="w-4 h-4" />
                           </button>
@@ -299,16 +299,16 @@ export default function CustomersPage() {
                             <div className="absolute right-0 top-full mt-1 z-20 w-48 bg-card border border-border rounded-lg shadow-xl py-1">
                               <Link
                                 href={`/customers/${customer.id}`}
-                                className="flex items-center gap-2 px-4 py-2.5 text-sm text-text-secondary hover:text-text-primary hover:bg-white/[0.04] transition-colors"
+                                className="flex items-center gap-2 px-4 py-2.5 text-sm text-zinc-400 hover:text-white hover:bg-white/[0.04] transition-colors"
                               >
                                 <Eye className="w-4 h-4" />
                                 View Profile
                               </Link>
-                              <button className="flex items-center gap-2 px-4 py-2.5 text-sm text-text-secondary hover:text-text-primary hover:bg-white/[0.04] transition-colors w-full text-left">
+                              <button className="flex items-center gap-2 px-4 py-2.5 text-sm text-zinc-400 hover:text-white hover:bg-white/[0.04] transition-colors w-full text-left">
                                 <MessageCircle className="w-4 h-4" />
                                 Send WhatsApp
                               </button>
-                              <button className="flex items-center gap-2 px-4 py-2.5 text-sm text-text-secondary hover:text-text-primary hover:bg-white/[0.04] transition-colors w-full text-left">
+                              <button className="flex items-center gap-2 px-4 py-2.5 text-sm text-zinc-400 hover:text-white hover:bg-white/[0.04] transition-colors w-full text-left">
                                 <Pencil className="w-4 h-4" />
                                 Edit Customer
                               </button>
@@ -326,17 +326,17 @@ export default function CustomersPage() {
 
         {/* Pagination */}
         <div className="flex items-center justify-between px-6 py-4 border-t border-border">
-          <p className="text-xs text-text-muted">
+          <p className="text-xs text-zinc-600">
             Showing{" "}
-            <span className="text-text-secondary font-medium">
+            <span className="text-zinc-400 font-medium">
               {totalCustomers === 0 ? 0 : (page - 1) * ROWS_PER_PAGE + 1}
             </span>{" "}
             to{" "}
-            <span className="text-text-secondary font-medium">
+            <span className="text-zinc-400 font-medium">
               {Math.min(page * ROWS_PER_PAGE, totalCustomers)}
             </span>{" "}
             of{" "}
-            <span className="text-text-secondary font-medium">
+            <span className="text-zinc-400 font-medium">
               {totalCustomers}
             </span>{" "}
             customers
@@ -345,7 +345,7 @@ export default function CustomersPage() {
             <button
               onClick={() => setPage(Math.max(1, page - 1))}
               disabled={page === 1}
-              className="p-2 rounded-lg text-text-muted hover:text-text-primary hover:bg-white/[0.06] disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
+              className="p-2 rounded-lg text-zinc-600 hover:text-white hover:bg-white/[0.06] disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
@@ -357,7 +357,7 @@ export default function CustomersPage() {
                   "w-8 h-8 rounded-lg text-xs font-medium transition-all duration-200",
                   p === page
                     ? "bg-emerald text-white"
-                    : "text-text-muted hover:text-text-primary hover:bg-white/[0.06]"
+                    : "text-zinc-600 hover:text-white hover:bg-white/[0.06]"
                 )}
               >
                 {p}
@@ -366,7 +366,7 @@ export default function CustomersPage() {
             <button
               onClick={() => setPage(Math.min(totalPages, page + 1))}
               disabled={page === totalPages}
-              className="p-2 rounded-lg text-text-muted hover:text-text-primary hover:bg-white/[0.06] disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
+              className="p-2 rounded-lg text-zinc-600 hover:text-white hover:bg-white/[0.06] disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
