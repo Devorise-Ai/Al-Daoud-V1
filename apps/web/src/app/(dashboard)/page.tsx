@@ -47,53 +47,29 @@ const quickActions = [
     description: "Create a reservation",
     icon: Plus,
     href: "/bookings/new",
-    color: "emerald",
+    gradient: "from-emerald-500/10 to-emerald-600/5",
+    iconColor: "text-emerald-400",
+    borderColor: "border-emerald-500/10 hover:border-emerald-500/25",
   },
   {
     label: "View Calendar",
     description: "Full schedule view",
     icon: CalendarDays,
     href: "/calendar",
-    color: "blue",
+    gradient: "from-blue-500/10 to-blue-600/5",
+    iconColor: "text-blue-400",
+    borderColor: "border-blue-500/10 hover:border-blue-500/25",
   },
   {
     label: "Manage Courts",
     description: "Court settings",
     icon: Settings2,
     href: "/courts",
-    color: "violet",
+    gradient: "from-violet-500/10 to-violet-600/5",
+    iconColor: "text-violet-400",
+    borderColor: "border-violet-500/10 hover:border-violet-500/25",
   },
 ];
-
-const colorMap: Record<
-  string,
-  { bg: string; text: string; iconBg: string; border: string }
-> = {
-  emerald: {
-    bg: "bg-emerald/5",
-    text: "text-emerald",
-    iconBg: "bg-emerald/10",
-    border: "border-emerald/10",
-  },
-  blue: {
-    bg: "bg-blue-500/5",
-    text: "text-blue-400",
-    iconBg: "bg-blue-500/10",
-    border: "border-blue-500/10",
-  },
-  violet: {
-    bg: "bg-violet-500/5",
-    text: "text-violet-400",
-    iconBg: "bg-violet-500/10",
-    border: "border-violet-500/10",
-  },
-  amber: {
-    bg: "bg-amber-500/5",
-    text: "text-amber-400",
-    iconBg: "bg-amber-500/10",
-    border: "border-amber-500/10",
-  },
-};
 
 function formatBookingTime(startTime: string, endTime: string): string {
   const start = new Date(startTime);
@@ -117,7 +93,6 @@ export default function DashboardPage() {
       setLoading(true);
       setError(null);
 
-      // Fetch dashboard stats (requires auth - graceful fallback)
       let dashStats: DashboardStats | null = null;
       try {
         const res = await apiClient.get<{
@@ -148,7 +123,6 @@ export default function DashboardPage() {
       }
       setStats(dashStats);
 
-      // Fetch today's bookings
       try {
         const today = new Date().toISOString().split("T")[0];
         const res = await apiClient.get<{ data: ApiBooking[] }>(
@@ -159,7 +133,6 @@ export default function DashboardPage() {
         setTodayBookings([]);
       }
 
-      // Fetch courts list
       try {
         const res = await apiClient.get<
           { id: number; name: string; status: string }[]
@@ -178,38 +151,10 @@ export default function DashboardPage() {
 
   const statCards = stats
     ? [
-        {
-          label: "Today's Bookings",
-          value: stats.todayBookings,
-          change: "",
-          trend: "up" as const,
-          icon: Calendar,
-          color: "emerald",
-        },
-        {
-          label: "Today's Revenue",
-          value: stats.todayRevenue,
-          change: "",
-          trend: "up" as const,
-          icon: DollarSign,
-          color: "blue",
-        },
-        {
-          label: "Active Courts",
-          value: stats.activeCourts,
-          change: "",
-          trend: "up" as const,
-          icon: MapPin,
-          color: "violet",
-        },
-        {
-          label: "AI Conversations",
-          value: stats.aiConversations,
-          change: "",
-          trend: "up" as const,
-          icon: Bot,
-          color: "amber",
-        },
+        { label: "Today's Bookings", value: stats.todayBookings, icon: Calendar, gradient: "from-emerald-500/15 to-emerald-600/5", iconColor: "text-emerald-400", borderColor: "border-emerald-500/10" },
+        { label: "Today's Revenue", value: stats.todayRevenue, icon: DollarSign, gradient: "from-blue-500/15 to-blue-600/5", iconColor: "text-blue-400", borderColor: "border-blue-500/10" },
+        { label: "Active Courts", value: stats.activeCourts, icon: MapPin, gradient: "from-violet-500/15 to-violet-600/5", iconColor: "text-violet-400", borderColor: "border-violet-500/10" },
+        { label: "AI Conversations", value: stats.aiConversations, icon: Bot, gradient: "from-amber-500/15 to-amber-600/5", iconColor: "text-amber-400", borderColor: "border-amber-500/10" },
       ]
     : [];
 
@@ -217,40 +162,34 @@ export default function DashboardPage() {
     return (
       <div className="max-w-7xl mx-auto space-y-8">
         <div>
-          <h1 className="text-2xl font-bold text-text-primary tracking-tight">
-            Welcome back, Admin
+          <h1 className="text-[22px] font-bold text-white tracking-[-0.02em]">
+            Welcome back
           </h1>
-          <p className="text-text-secondary text-sm mt-1">
-            Here is what is happening at Al Daoud Courts today.
-          </p>
+          <p className="text-zinc-500 text-[13px] mt-1">Loading dashboard...</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
           {[1, 2, 3, 4].map((i) => (
-            <div
-              key={i}
-              className="rounded-xl border border-border-subtle bg-card p-5 animate-pulse"
-            >
-              <div className="h-10 w-10 rounded-lg bg-white/[0.06]" />
-              <div className="mt-4 space-y-2">
-                <div className="h-6 w-16 rounded bg-white/[0.06]" />
-                <div className="h-3 w-24 rounded bg-white/[0.06]" />
+            <div key={i} className="rounded-xl border border-white/[0.04] bg-[#0e0e0e] p-6 animate-pulse">
+              <div className="h-10 w-10 rounded-xl bg-white/[0.04]" />
+              <div className="mt-5 space-y-2">
+                <div className="h-7 w-16 rounded bg-white/[0.04]" />
+                <div className="h-3 w-24 rounded bg-white/[0.04]" />
               </div>
             </div>
           ))}
         </div>
-        <div className="text-text-muted text-sm">Loading dashboard data...</div>
       </div>
     );
   }
 
   return (
     <div className="max-w-7xl mx-auto space-y-8">
-      {/* Welcome Section */}
+      {/* Welcome */}
       <div>
-        <h1 className="text-2xl font-bold text-text-primary tracking-tight">
-          Welcome back, Admin
+        <h1 className="text-[22px] font-bold text-white tracking-[-0.02em]">
+          Welcome back
         </h1>
-        <p className="text-text-secondary text-sm mt-1">
+        <p className="text-zinc-500 text-[13px] mt-1">
           Here is what is happening at Al Daoud Courts today.
         </p>
       </div>
@@ -259,47 +198,27 @@ export default function DashboardPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
         {statCards.map((stat) => {
           const Icon = stat.icon;
-          const colors = colorMap[stat.color];
           return (
             <div
               key={stat.label}
               className={cn(
-                "rounded-xl border bg-card p-5 transition-all duration-200 hover:bg-card-hover",
-                colors.border
+                "relative rounded-xl border bg-[#0e0e0e] p-6 transition-all duration-300 hover:-translate-y-[2px] hover:shadow-lg hover:shadow-black/20 group overflow-hidden",
+                stat.borderColor
               )}
             >
-              <div className="flex items-start justify-between">
-                <div
-                  className={cn(
-                    "w-10 h-10 rounded-lg flex items-center justify-center",
-                    colors.iconBg
-                  )}
-                >
-                  <Icon className={cn("w-5 h-5", colors.text)} />
+              {/* Subtle gradient overlay */}
+              <div className={cn("absolute inset-0 bg-gradient-to-br opacity-50", stat.gradient)} />
+
+              <div className="relative">
+                <div className="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.04] flex items-center justify-center mb-5 group-hover:scale-105 transition-transform duration-300">
+                  <Icon className={cn("w-5 h-5", stat.iconColor)} />
                 </div>
-                {stat.change && (
-                  <div
-                    className={cn(
-                      "flex items-center gap-1 text-xs font-medium px-2 py-1 rounded-full",
-                      stat.trend === "up"
-                        ? "text-emerald bg-emerald/10"
-                        : "text-danger bg-danger/10"
-                    )}
-                  >
-                    {stat.trend === "up" ? (
-                      <TrendingUp className="w-3 h-3" />
-                    ) : (
-                      <TrendingDown className="w-3 h-3" />
-                    )}
-                    {stat.change}
-                  </div>
-                )}
-              </div>
-              <div className="mt-4">
-                <p className="text-2xl font-bold text-text-primary tracking-tight">
+                <p className="text-[26px] font-bold text-white tracking-[-0.02em] leading-none">
                   {stat.value}
                 </p>
-                <p className="text-xs text-text-muted mt-1">{stat.label}</p>
+                <p className="text-[11px] text-zinc-500 mt-2 uppercase tracking-[0.08em] font-medium">
+                  {stat.label}
+                </p>
               </div>
             </div>
           );
@@ -308,33 +227,33 @@ export default function DashboardPage() {
 
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
         {/* Today's Schedule */}
-        <div className="xl:col-span-2 bg-card border border-border-subtle rounded-xl overflow-hidden">
-          <div className="flex items-center justify-between px-6 py-4 border-b border-border">
+        <div className="xl:col-span-2 bg-[#0e0e0e] border border-white/[0.04] rounded-xl overflow-hidden">
+          <div className="flex items-center justify-between px-6 py-4 border-b border-white/[0.04]">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-emerald/10 flex items-center justify-center">
-                <Clock className="w-4 h-4 text-emerald" />
+              <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
+                <Clock className="w-4 h-4 text-emerald-400" />
               </div>
               <div>
-                <h2 className="text-sm font-semibold text-text-primary">
+                <h2 className="text-[14px] font-semibold text-white">
                   Today&apos;s Schedule
                 </h2>
-                <p className="text-xs text-text-muted">
+                <p className="text-[11px] text-zinc-600">
                   {todayBookings.length} bookings scheduled
                 </p>
               </div>
             </div>
             <Link
               href="/bookings"
-              className="text-xs text-emerald hover:text-emerald-light font-medium flex items-center gap-1 transition-colors"
+              className="text-[12px] text-emerald-400/80 hover:text-emerald-400 font-medium flex items-center gap-1 transition-colors duration-200"
             >
               View all
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
 
-          <div className="divide-y divide-border">
+          <div className="divide-y divide-white/[0.03]">
             {todayBookings.length === 0 && (
-              <div className="px-6 py-8 text-center text-text-muted text-sm">
+              <div className="px-6 py-12 text-center text-zinc-600 text-[13px]">
                 No bookings scheduled for today.
               </div>
             )}
@@ -342,37 +261,40 @@ export default function DashboardPage() {
               <Link
                 key={booking.id}
                 href={`/bookings/${booking.id}`}
-                className="flex items-center gap-4 px-6 py-3.5 hover:bg-white/[0.02] transition-colors"
+                className="flex items-center gap-4 px-6 py-4 hover:bg-white/[0.02] transition-all duration-200 group"
               >
-                {/* Time */}
-                <div className="w-28 shrink-0">
-                  <span className="text-sm font-medium text-text-primary">
+                {/* Color indicator + Time */}
+                <div className="flex items-center gap-3 w-32 shrink-0">
+                  <div className={cn(
+                    "w-1 h-8 rounded-full",
+                    booking.status === "confirmed" ? "bg-emerald-500" : booking.status === "completed" ? "bg-blue-500" : "bg-zinc-700"
+                  )} />
+                  <span className="text-[13px] font-mono font-medium text-zinc-300">
                     {formatBookingTime(booking.start_time, booking.end_time)}
                   </span>
                 </div>
 
-                {/* Court & Customer */}
+                {/* Customer & Court */}
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-text-primary truncate">
+                  <p className="text-[13px] font-medium text-zinc-200 truncate group-hover:text-white transition-colors">
                     {booking.customer_name || "Unknown Customer"}
                   </p>
-                  <p className="text-xs text-text-muted truncate">
+                  <p className="text-[11px] text-zinc-600 truncate">
                     {booking.court_name || `Court ${booking.court_id}`}
                   </p>
                 </div>
 
-                {/* Duration */}
-                <div className="hidden sm:flex items-center gap-1.5 text-xs text-text-muted shrink-0">
-                  <Clock className="w-3.5 h-3.5" />
-                  {booking.duration_mins}m
+                {/* Price */}
+                <div className="hidden sm:block text-[13px] font-semibold text-zinc-300 shrink-0">
+                  {booking.price} <span className="text-zinc-600 font-normal text-[11px]">JOD</span>
                 </div>
 
                 {/* Status */}
                 <div
                   className={cn(
-                    "px-2.5 py-1 rounded-full text-xs font-medium shrink-0",
+                    "px-2.5 py-1 rounded-full text-[11px] font-semibold shrink-0",
                     booking.status === "confirmed"
-                      ? "bg-emerald/10 text-emerald"
+                      ? "bg-emerald-500/10 text-emerald-400"
                       : booking.status === "completed"
                         ? "bg-blue-500/10 text-blue-400"
                         : booking.status === "cancelled"
@@ -388,88 +310,92 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Quick Actions */}
-        <div className="space-y-4">
-          <div className="bg-card border border-border-subtle rounded-xl p-6">
-            <h2 className="text-sm font-semibold text-text-primary mb-4">
+        {/* Right Column */}
+        <div className="space-y-5">
+          {/* Quick Actions */}
+          <div className="bg-[#0e0e0e] border border-white/[0.04] rounded-xl p-6">
+            <h2 className="text-[13px] font-semibold text-zinc-300 uppercase tracking-[0.06em] mb-4">
               Quick Actions
             </h2>
-            <div className="space-y-3">
+            <div className="space-y-2.5">
               {quickActions.map((action) => {
                 const Icon = action.icon;
-                const colors = colorMap[action.color];
                 return (
                   <Link
                     key={action.label}
                     href={action.href}
-                    className="w-full flex items-center gap-3 p-3 rounded-lg border border-border hover:border-border-subtle hover:bg-white/[0.03] transition-all duration-200 group text-left"
+                    className={cn(
+                      "w-full flex items-center gap-3 p-3.5 rounded-xl border transition-all duration-300 group hover:-translate-y-[1px] hover:shadow-md hover:shadow-black/10",
+                      action.borderColor,
+                      "bg-white/[0.01]"
+                    )}
                   >
-                    <div
-                      className={cn(
-                        "w-9 h-9 rounded-lg flex items-center justify-center shrink-0",
-                        colors.iconBg
-                      )}
-                    >
-                      <Icon className={cn("w-4 h-4", colors.text)} />
+                    <div className={cn("w-10 h-10 rounded-xl bg-gradient-to-br flex items-center justify-center shrink-0", action.gradient)}>
+                      <Icon className={cn("w-[18px] h-[18px]", action.iconColor)} />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-text-primary">
+                      <p className="text-[13px] font-medium text-zinc-200 group-hover:text-white transition-colors">
                         {action.label}
                       </p>
-                      <p className="text-xs text-text-muted">
+                      <p className="text-[11px] text-zinc-600">
                         {action.description}
                       </p>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-text-muted opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
+                    <ArrowRight className="w-4 h-4 text-zinc-700 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
                   </Link>
                 );
               })}
             </div>
           </div>
 
-          {/* Court Status Card */}
-          <div className="bg-card border border-border-subtle rounded-xl p-6">
-            <h2 className="text-sm font-semibold text-text-primary mb-4">
+          {/* Court Status */}
+          <div className="bg-[#0e0e0e] border border-white/[0.04] rounded-xl p-6">
+            <h2 className="text-[13px] font-semibold text-zinc-300 uppercase tracking-[0.06em] mb-4">
               Court Status
             </h2>
             <div className="space-y-3">
               {courts.length === 0 && (
-                <p className="text-xs text-text-muted">No courts available.</p>
+                <p className="text-[12px] text-zinc-600">No courts available.</p>
               )}
               {courts.map((court) => {
                 const courtStatus = court.status || "available";
                 return (
                   <div
                     key={court.id}
-                    className="flex items-center justify-between"
+                    className="flex items-center justify-between py-1"
                   >
-                    <div className="flex items-center gap-2.5">
-                      <div
-                        className={cn(
-                          "w-2 h-2 rounded-full",
-                          courtStatus === "occupied" && "bg-emerald",
-                          courtStatus === "available" && "bg-text-muted",
-                          courtStatus === "maintenance" && "bg-amber-400",
-                          courtStatus !== "occupied" &&
-                            courtStatus !== "available" &&
-                            courtStatus !== "maintenance" &&
-                            "bg-text-muted"
+                    <div className="flex items-center gap-3">
+                      <div className="relative">
+                        <div
+                          className={cn(
+                            "w-2.5 h-2.5 rounded-full",
+                            courtStatus === "occupied" && "bg-emerald-500",
+                            courtStatus === "available" && "bg-zinc-600",
+                            courtStatus === "maintenance" && "bg-amber-400",
+                            courtStatus !== "occupied" &&
+                              courtStatus !== "available" &&
+                              courtStatus !== "maintenance" &&
+                              "bg-zinc-600"
+                          )}
+                        />
+                        {courtStatus === "occupied" && (
+                          <div className="absolute inset-0 w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping opacity-30" />
                         )}
-                      />
-                      <span className="text-sm text-text-secondary">
+                      </div>
+                      <span className="text-[13px] text-zinc-300">
                         {court.name}
                       </span>
                     </div>
                     <span
                       className={cn(
-                        "text-xs font-medium capitalize",
-                        courtStatus === "occupied" && "text-emerald",
-                        courtStatus === "available" && "text-text-muted",
-                        courtStatus === "maintenance" && "text-amber-400",
+                        "text-[11px] font-semibold capitalize px-2 py-0.5 rounded-md",
+                        courtStatus === "occupied" && "text-emerald-400 bg-emerald-500/10",
+                        courtStatus === "available" && "text-zinc-500 bg-zinc-800/50",
+                        courtStatus === "maintenance" && "text-amber-400 bg-amber-500/10",
                         courtStatus !== "occupied" &&
                           courtStatus !== "available" &&
                           courtStatus !== "maintenance" &&
-                          "text-text-muted"
+                          "text-zinc-500 bg-zinc-800/50"
                       )}
                     >
                       {courtStatus}
