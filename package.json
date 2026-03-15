@@ -1,23 +1,28 @@
 {
-  "name": "booking-courts",
+  "name": "court-aldaoud-agent",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "AI-Powered Booking System for Al Daoud Football Courts",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "prisma": {
-    "seed": "ts-node prisma/seed.ts"
+    "dev:api": "npm run dev --workspace=apps/api",
+    "dev:web": "npm run dev --workspace=apps/web",
+    "dev": "npm run dev:api & npm run dev:web",
+    "build": "npm run build --workspaces",
+    "prisma:seed": "ts-node prisma/seed.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "@prisma/client": "^7.5.0",
-    "@types/node": "^25.5.0",
-    "prisma": "^7.5.0",
+    "@prisma/client": "^5.10.2",
+    "@types/node": "^20.11.24",
+    "prisma": "^5.10.2",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
+    "typescript": "^5.3.3"
   }
 }
