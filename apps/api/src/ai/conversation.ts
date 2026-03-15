@@ -64,12 +64,24 @@ export async function saveConversation(state: ConversationState): Promise<void> 
 export function addMessage(state: ConversationState, message: ChatMessage): void {
   state.messages.push(message);
 
-  // Keep only last 20 messages to prevent context overflow
-  if (state.messages.length > 20) {
-    // Keep system message (first) + last 19
+  // Keep only last 40 messages to prevent context overflow (increased from 20)
+  if (state.messages.length > 40) {
     const system = state.messages.find(m => m.role === 'system');
-    state.messages = state.messages.slice(-19);
-    if (system) {
+    
+    // Start by taking the last 39 messages
+    let startIndex = state.messages.length - 39;
+    
+    // Safety check for OpenAI protocol: 
+    // Truncated list MUST NOT start with a 'tool' role message.
+    // It must start with 'user', 'assistant' (without tool_calls), or 'system'.
+    while (startIndex < state.messages.length && state.messages[startIndex].role === 'tool') {
+      startIndex++;
+    }
+    
+    state.messages = state.messages.slice(startIndex);
+    
+    // Always preserve system message at the top
+    if (system && !state.messages.includes(system)) {
       state.messages.unshift(system);
     }
   }
